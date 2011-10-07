@@ -297,7 +297,9 @@ function! Tex_ViewLaTeX()
 
 	end
 
-	let execString = substitute(execString, '\V$*', mainfname, 'g')
+    " NOON: Adjustment so that LaTeX files are assumed to be in a /bin directory. (I've
+    " also configured ,ll to build to /bin).
+	let execString = substitute(execString, '\V$*', 'bin/'. mainfname, 'g')
 	call Tex_Debug("Tex_ViewLaTeX: execString = ".execString, "comp")
 
 	exec 'silent! !'.execString
