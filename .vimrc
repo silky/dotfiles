@@ -244,6 +244,11 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabLongestHighlight = 1
 
 "   }}}
+"   > TaskList ______________ {{{
+
+map <unique> <leader>tt <Plug>TaskList
+
+"   }}}
 " }}}
 " Quick editing of some typical files ----------------------------------------- {{{
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
