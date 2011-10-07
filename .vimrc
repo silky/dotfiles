@@ -1,0 +1,308 @@
+" Noons .vimrc.
+"
+" Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
+"
+" Author: Noon Silk <noonsilk@gmail.com>
+" Last Modified: 1-Oct-2011
+
+" Initialisation -------------------------------------------------------------- {{{
+
+filetype off
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+call pathogen#infect()
+filetype plugin indent on
+
+set nocompatible
+
+" }}}
+" Colors and Fonts ------------------------------------------------------------ {{{
+
+syntax on
+set background=dark
+colorscheme noon
+
+" set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+" If you have it, this is somewhat preferable, otherwise use the above.
+set guifont=Akkurat-Mono\ 10
+
+" }}}
+" General Options ------------------------------------------------------------- {{{
+
+set ts=4 " What kind of lunatic has tabs not equal to this.
+set encoding=utf-8
+set modelines=0
+set autoindent
+set showmode
+set showcmd
+set ruler
+set ttyfast
+set backspace=indent,eol,start " TODO: REVIEW
+set laststatus=2
+set history=10000
+set undofile
+set undoreload=10000
+set nolist
+set shell=/bin/bash
+set autoread
+set display=uhex
+set nofsync
+set shiftround
+set notimeout
+set nottimeout
+set autowrite
+
+" TODO: Consider
+" > cindent, cinkeys, etc
+" > set terminal size (columns, etc) in .gvimrc
+
+set guioptions=aegimtr
+
+" he's overwritten 'fillchars' also.
+"
+" Consider highly-configuring 'guicursor'.
+
+set completeopt=longest,menuone,preview " Review
+
+" 	> Tabs __________________ {{{
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set wrap
+set textwidth=85
+set formatoptions=qrn1c
+
+" 	}}}
+
+" }}}
+" Backups --------------------------------------------------------------------- {{{
+
+set undodir=~/.vim/tmp/undo/      " undo files
+set backupdir=~/.vim/tmp/backup/ " backups
+set directory=~/.vim/tmp/swap/    " swap files
+set backup                        " enabled
+
+" }}}
+" Status line ----------------------------------------------------------------- {{{
+
+set statusline=%f    " Path.
+set statusline+=%m   " Modified flag.
+set statusline+=%r   " Readonly flag.
+set statusline+=%w   " Preview window flag.
+
+set statusline+=\    " Space.
+
+"set statusline+=%#redbar#                " Highlight the following as a warning.
+"set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+"set statusline+=%*                           " Reset highlighting.
+
+set statusline+=%=   " Right align.
+
+" File format, encoding and type.  Ex: "(unix/utf-8/python)"
+set statusline+=(
+set statusline+=%{&ff}                        " Format (unix/DOS).
+set statusline+=/
+set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
+set statusline+=/
+set statusline+=%{&ft}                        " Type (python).
+set statusline+=)
+
+" Line and column position and counts.
+set statusline+=\ (line\ %l\/%L,\ col\ %03c)
+
+" }}}
+" Searching and movement ------------------------------------------------------ {{{
+
+" Use sane regexes.
+nnoremap / /\v
+vnoremap / /\v
+
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+
+set gdefault
+
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=10
+
+set virtualedit+=block
+
+" }}}
+" Folding --------------------------------------------------------------------- {{{
+
+set foldlevelstart=0
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+" }}}
+" Filetype-specific stuff ----------------------------------------------------- {{{
+"   > Javascript ____________ {{{
+augroup ft_javascript
+    au!
+
+    au FileType javascript setlocal foldmethod=marker
+    au FileType javascript setlocal foldmarker={,}
+augroup END
+"   }}}
+"   > Python ________________ {{{
+augroup ft_python
+    au!
+
+    au Filetype python noremap  <buffer> <localleader>rr :RopeRename<CR>
+    au Filetype python noremap  <buffer> <localleader>ri :RopeOrganizeImports<CR>
+    au Filetype python noremap  <buffer> <localleader>dd :RopeDefinition<CR>
+
+    au FileType python setlocal omnifunc=pythoncomplete#Complete
+    au Filetype python setlocal foldmethod=marker
+augroup END
+"   }}}
+"   > QuickFix ______________ {{{
+augroup ft_quickfix
+    au!
+    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
+augroup END
+"   }}}
+"   > Vim ___________________ {{{
+augroup ft_vim
+    au!
+
+    au FileType vim setlocal foldmethod=marker
+    au FileType help setlocal textwidth=78
+
+    " TODO: Confirm what this does.
+    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+augroup END
+"   }}}
+"   > Mail __________________ {{{
+augroup ft_mail
+    au!
+
+    au Filetype mail setlocal foldmethod=marker
+augroup END
+"   }}}
+"   > Mako __________________ {{{
+augroup ft_mako
+    au!
+
+    au BufRead,BufNewFile *.mako 	set filetype=mako
+augroup END
+"   }}}
+"   > TeX ___________________ {{{
+augroup ft_tex
+    au!
+
+    au BufRead,BufNewFile *.tex 	set filetype=tex
+augroup END
+"   }}}
+" }}}
+" Plugin configuration -------------------------------------------------------- {{{
+"   > LaTeX-suite ___________ {{{
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" I prefer LaTeX to be built to /bin
+let g:Tex_CompileRule_pdf = 'pdflatex -shell-escape -output-directory=bin -interaction=nonstopmode $*'
+let g:Tex_ViewRule_pdf = 'okular'
+let g:Tex_Debug = 0 " Tex_Debug Mode, if set to 1, use :call Tex_PrintDebug() to see the statements.
+set grepprg=grep\ -nH\ $*
+"   }}}
+"   > Command-T _____________ {{{
+let g:CommandTMaxHeight = 20
+"   }}}
+"   > Gundo _________________ {{{
+
+noremap <leader>gu :GundoToggle<CR>
+let g:gundo_preview_bottom = 1
+
+"   }}}
+"   > Supertab ______________ {{{
+
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabLongestHighlight = 1
+
+"   }}}
+" }}}
+" Quick editing of some typical files ----------------------------------------- {{{
+nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+" }}}
+" Remappings ------------------------------------------------------------------ {{{
+"   > General _______________ {{{
+
+noremap ' `
+noremap ` <C-^>
+noremap ; :
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"   }}}
+"   > Leaders _______________ {{{
+
+let mapleader=','
+let maplocalleader='\\' " TODO: Confirm what this is about.
+
+map <leader>u :call HandleURL()<CR>
+map <leader><leader> :CommandT<cr>
+
+" Window Navigation
+noremap <Tab>h <C-w>h
+noremap <Tab>j <C-w>j
+noremap <Tab>k <C-w>k
+noremap <Tab>l <C-w>l
+noremap <Tab><Tab> <C-w>p
+
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" Compile and run LaTeX file in one step
+map <leader>lp ,ll<CR>,lv<CR>
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+"   }}}
+" }}}
+" GUI configs ----------------------------------------------------------------- {{{
+
+" Different cursors for different modes.
+set guicursor=n-c:block-Cursor-blinkon0
+set guicursor+=v:block-vCursor-blinkon0
+
+" }}}
+" Utility Functions ----------------------------------------------------------- {{{
+
+" Stolen from SJL, stolen from https://github.com/askedrelic/homedir/blob/master/.vimrc
+function! HandleURL()
+    let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+    echo s:uri
+    if s:uri != ""
+        exec "!firefox \"" . s:uri . "\""
+    else
+        echo "No URL found in line."
+    endif
+endfunction
+
+" }}}
