@@ -49,3 +49,9 @@ highlight texType guifg=Green
 highlight texGreek guifg=#00bf2e
 "highlight texCmdArgs guibg=Purple
 highlight texEnvBgn guibg=Purple
+
+
+" MiniBufExplorer
+"
+
+highligh MBEVisibleChangedActive guifg=#e01b4c

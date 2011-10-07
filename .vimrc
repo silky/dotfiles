@@ -8,9 +8,8 @@
 " Initialisation -------------------------------------------------------------- {{{
 
 filetype off
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
 call pathogen#infect()
+call pathogen#helptags()
 filetype plugin indent on
 
 set nocompatible
@@ -37,7 +36,7 @@ set showmode
 set showcmd
 set ruler
 set ttyfast
-set backspace=indent,eol,start " TODO: REVIEW
+set backspace=indent,eol,start
 set laststatus=2
 set history=10000
 set undofile
@@ -58,8 +57,6 @@ set autowrite
 
 set guioptions=aegimtr
 
-" he's overwritten 'fillchars' also.
-"
 " Consider highly-configuring 'guicursor'.
 
 set completeopt=longest,menuone,preview " Review
@@ -231,6 +228,9 @@ set grepprg=grep\ -nH\ $*
 "   }}}
 "   > Command-T _____________ {{{
 let g:CommandTMaxHeight = 20
+
+noremap <tab>e :CommandT<cr>
+
 "   }}}
 "   > Gundo _________________ {{{
 
