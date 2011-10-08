@@ -76,9 +76,9 @@ set formatoptions=qrn1c
 " }}}
 " Backups --------------------------------------------------------------------- {{{
 
-set undodir=~/.vim/tmp/undo/      " undo files
-set backupdir=~/.vim/tmp/backup/ " backups
-set directory=~/.vim/tmp/swap/    " swap files
+set undodir=~/.tmp/vim/undo/      " undo files
+set backupdir=~/.tmp/vim/backup/ " backups
+set directory=~/.tmp/vim/swap/    " swap files
 set backup                        " enabled
 
 " }}}
@@ -247,6 +247,13 @@ let g:SuperTabLongestHighlight = 1
 "   > TaskList ______________ {{{
 
 map <unique> <leader>tt <Plug>TaskList
+
+"   }}}
+"   > MiniBufExplorer _______ {{{
+
+" Single click to open buffer.
+
+let g:miniBufExplUseSingleClick = 1
 
 "   }}}
 " }}}
