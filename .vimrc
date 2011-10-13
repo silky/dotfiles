@@ -31,7 +31,11 @@ set guifont=Akkurat-Mono\ 10
 set ts=4 " What kind of lunatic has tabs not equal to this.
 set encoding=utf-8
 set modelines=0
+
 set autoindent
+set cpoptions+=I "do NOT revert tabbing I have specifically set.
+set cindent
+
 set showmode
 set showcmd
 set ruler
@@ -250,6 +254,11 @@ map <unique> <leader>tt <Plug>TaskList
 
 "   }}}
 "   > MiniBufExplorer _______ {{{
+
+" NOTE: I've deleted MiniBufExplorer from my bundle,
+" but may add it back at some point. I've decided tabs
+" are the One True Path, with viewing buffers at my leisure
+" via ":buffers"
 
 " Single click to open buffer.
 
