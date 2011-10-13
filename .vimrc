@@ -210,6 +210,8 @@ augroup ft_mako
     au!
 
     au BufRead,BufNewFile *.mako 	set filetype=mako
+
+    au FileType mako setlocal foldmethod=indent
 augroup END
 "   }}}
 "   > TeX ___________________ {{{

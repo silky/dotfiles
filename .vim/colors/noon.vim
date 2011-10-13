@@ -23,6 +23,7 @@ highlight Special	 ctermfg=12
 highlight Error					ctermbg=9							guibg=#ff0000
 highlight Todo		 ctermfg=4	ctermbg=3			  guifg=#000080 guibg=#c0c000
 highlight Directory  ctermfg=2						  guifg=#00c000
+highlight MatchParen guibg=black
 
 "highlight StatusLine ctermfg=11 ctermbg=12 cterm=none guifg=#ffff00 guibg=#e01b4c gui=none
 highlight StatusLine                                  guibg=#0e0e0e guifg=#e01b4c gui=none
