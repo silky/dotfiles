@@ -36,6 +36,11 @@ highlight Search				ctermbg=3							guibg=#c0c000
 highlight Visual guifg=White guibg=#c000bd
 highlight Folded ctermfg=216 guibg=#3d5354 guifg=white
 
+" Todo: Fix this.
+" Todo: My EasyMotion colouring is also fucked. Fix it.
+"
+highlight Pmenu guifg=black guibg=#eaeaea
+
 " Highlighting for LaTeX. The various options can be found in
 " the: </usr/share/vim/vim73/syntax/tex.vim> file.
 "

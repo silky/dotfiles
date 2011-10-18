@@ -28,7 +28,6 @@ set guifont=Akkurat-Mono\ 10
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
-set ts=4 " What kind of lunatic has tabs not equal to this.
 set encoding=utf-8
 set modelines=0
 
