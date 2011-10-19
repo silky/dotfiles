@@ -3,7 +3,7 @@
 " Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
 "
 " Author: Noon Silk <noonsilk@gmail.com>
-" Last Modified: 1-Oct-2011
+" Last Modified: 19-Oct-2011
 
 " Initialisation -------------------------------------------------------------- {{{
 
@@ -219,6 +219,7 @@ augroup ft_tex
     au BufRead,BufNewFile *.tex 	set filetype=tex
 augroup END
 "   }}}
+" }}}
 " Plugin configuration -------------------------------------------------------- {{{
 "   > LaTeX-suite ___________ {{{
 let g:Tex_DefaultTargetFormat = 'pdf'
@@ -249,7 +250,7 @@ let g:SuperTabLongestHighlight = 1
 "   }}}
 "   > TaskList ______________ {{{
 
-map <unique> <leader>tt <Plug>TaskList
+"map <unique> <leader>tl <Plug>TaskList
 
 "   }}}
 "   > MiniBufExplorer _______ {{{
@@ -264,6 +265,13 @@ map <unique> <leader>tt <Plug>TaskList
 let g:miniBufExplUseSingleClick = 1
 
 "   }}}
+"   > ConqueTerm ____________ {{{
+
+" Bugfix for ConqueTerm, doesn't check for this variable being
+" defined.
+let g:ConqueTerm_SessionSupport = 0
+
+"   }}}
 " }}}
 " Quick editing of some typical files ----------------------------------------- {{{
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
@@ -271,15 +279,18 @@ nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
 
+" ConqueTerm
+noremap vrr :ConqueTermSplit bpython<CR>
+noremap rr :ConqueTermVSplit bpython<CR>
+
 noremap ' `
 noremap ` <C-^>
 noremap ; :
 
 "set winwidth=120
-set winheight=40 " Autosize window to this height.
+set winheight=30 " Autosize window to this height.
 
 nnoremap <Space> za
-inoremap <Space> za
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -291,9 +302,8 @@ nnoremap N Nzzzv
 let mapleader=','
 let maplocalleader='\\' " TODO: Confirm what this is about.
 
-map <leader>tt <Plug>VimwikiToggleListItem
+map <leader>tl <Plug>VimwikiToggleListItem
 map <leader>u :call HandleURL()<CR>
-map <leader><leader> :CommandT<cr>
 
 " Window Navigation
 noremap <Tab>h <C-w>h
