@@ -8,8 +8,8 @@
 " Initialisation -------------------------------------------------------------- {{{
 
 filetype off
-call pathogen#infect()
-call pathogen#helptags()
+silent! call pathogen#infect()
+silent! call pathogen#helptags()
 filetype plugin indent on
 
 set nocompatible
@@ -34,7 +34,9 @@ set modelines=0
 set autoindent
 set cpoptions+=I "do NOT revert tabbing I have specifically set.
 set cindent
+set smartcase       " Case insensitive searches become sensitive with capitals
 
+set lazyredraw
 set showmode
 set showcmd
 set ruler
@@ -66,6 +68,7 @@ set completeopt=longest,menuone,preview " Review
 
 " 	> Tabs __________________ {{{
 
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -137,10 +140,6 @@ set virtualedit+=block
 " Folding --------------------------------------------------------------------- {{{
 
 set foldlevelstart=0
-
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
 
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
@@ -220,7 +219,6 @@ augroup ft_tex
     au BufRead,BufNewFile *.tex 	set filetype=tex
 augroup END
 "   }}}
-" }}}
 " Plugin configuration -------------------------------------------------------- {{{
 "   > LaTeX-suite ___________ {{{
 let g:Tex_DefaultTargetFormat = 'pdf'
@@ -277,6 +275,12 @@ noremap ' `
 noremap ` <C-^>
 noremap ; :
 
+"set winwidth=120
+set winheight=40 " Autosize window to this height.
+
+nnoremap <Space> za
+inoremap <Space> za
+
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -287,6 +291,7 @@ nnoremap N Nzzzv
 let mapleader=','
 let maplocalleader='\\' " TODO: Confirm what this is about.
 
+map <leader>tt <Plug>VimwikiToggleListItem
 map <leader>u :call HandleURL()<CR>
 map <leader><leader> :CommandT<cr>
 
