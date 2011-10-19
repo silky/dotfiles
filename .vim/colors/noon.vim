@@ -4,7 +4,7 @@
 " Based on "Pablo" by Ron Aaron <ron@ronware.org>
 "
 " Modified By:  Noon Silk <noonsilk@gmail.com>
-" Last Change:	2011 Oct 6
+" Last Change:	2011 Oct 19
 
 hi clear
 set background=dark
@@ -37,8 +37,6 @@ highlight Visual guifg=White guibg=#c000bd
 highlight Folded ctermfg=216 guibg=#3d5354 guifg=white
 
 " Todo: Fix this.
-" Todo: My EasyMotion colouring is also fucked. Fix it.
-"
 highlight Pmenu guifg=black guibg=#eaeaea
 
 " Highlighting for LaTeX. The various options can be found in
