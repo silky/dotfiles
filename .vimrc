@@ -280,8 +280,8 @@ nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
 "   > General _______________ {{{
 
 " ConqueTerm
-noremap vrr :ConqueTermVSplit bpython<CR>
-noremap rr :ConqueTerm bpython<CR>
+noremap rr :ConqueTerm python<CR>
+noremap brr :ConqueTerm bpython<CR>
 
 noremap ' `
 noremap ` <C-^>
