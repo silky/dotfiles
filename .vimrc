@@ -281,7 +281,7 @@ nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
 
 " ConqueTerm
 noremap rr :ConqueTerm python<CR>
-noremap brr :ConqueTerm bpython<CR>
+noremap rbr :ConqueTerm bpython<CR>
 
 noremap ' `
 noremap ` <C-^>
@@ -295,6 +295,7 @@ nnoremap <Space> za
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
 
 "   }}}
 "   > Leaders _______________ {{{
@@ -341,5 +342,13 @@ function! HandleURL()
         echo "No URL found in line."
     endif
 endfunction
+
+" }}}
+" Commands -------------------------------------------------------------------- {{{
+
+" Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
+" some source dir, and posts the results in the quickfix window.
+command Gtta Gtt ~/dev
+command -nargs=1 -complete=file Gtt execute "!~/dev/silky-github/utils/find-todo/find-todo <args> concise>~/temp/ql.errs" | cget ~/temp/ql.errs | copen
 
 " }}}
