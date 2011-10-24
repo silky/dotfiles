@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 10
+set guifont=Akkurat-Mono\ 8
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -348,7 +348,7 @@ endfunction
 
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
-command Gtta Gtt ~/dev
-command -nargs=1 -complete=file Gtt execute "!~/dev/silky-github/utils/find-todo/find-todo <args> concise>~/temp/ql.errs" | cget ~/temp/ql.errs | copen
+command! Gtta Gtt ~/dev
+command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise')
 
 " }}}
