@@ -37,7 +37,8 @@ highlight Visual guifg=White guibg=#c000bd
 highlight Folded ctermfg=216 guibg=#3d5354 guifg=white
 
 " Todo: Fix this.
-highlight Pmenu guifg=black guibg=#eaeaea
+highlight Pmenu guifg=#e1e1e1 guibg=black
+highlight PmenuSel guifg=black guibg=#e01b4c
 
 " Highlighting for LaTeX. The various options can be found in
 " the: </usr/share/vim/vim73/syntax/tex.vim> file.
