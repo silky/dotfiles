@@ -349,6 +349,6 @@ endfunction
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
 command! Gtta Gtt ~/dev
-command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise')
+command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
 
 " }}}
