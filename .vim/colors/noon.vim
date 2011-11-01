@@ -59,4 +59,8 @@ highlight texEnvBgn guibg=Purple
 " MiniBufExplorer
 "
 
-highligh MBEVisibleChangedActive guifg=#e01b4c
+highlight MBEVisibleChangedActive guifg=#e01b4c
+
+" vimwiki
+highlight Title gui=none guifg=#e4cb14
+highlight Underlined guifg=#e01b63

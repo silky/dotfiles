@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 8
+set guifont=Akkurat-Mono\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -270,6 +270,13 @@ let g:miniBufExplUseSingleClick = 1
 " Bugfix for ConqueTerm, doesn't check for this variable being
 " defined.
 let g:ConqueTerm_SessionSupport = 0
+
+"   }}}
+"   > VimWiki _______________ {{{
+
+" Configure my wikis
+
+let g:vimwiki_list = [{'path': '~/research/diary'}]
 
 "   }}}
 " }}}
