@@ -325,6 +325,9 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " Compile and run LaTeX file in one step
 map <leader>lp ,ll<CR>,lv<CR>
 
+" Save the current session.
+noremap <leader>s :mks! ~/.last_session.vim \| echo 'Session saved.'<CR>
+
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
