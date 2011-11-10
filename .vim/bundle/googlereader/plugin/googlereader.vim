@@ -175,7 +175,8 @@ function! s:doHttp(url, getdata, postdata, headdata, returnheader)
     let url .= "?" . getdata
   endif
   " NOON: Configuring it to use RMIT's proxy.
-  let command = "curl -L -s -k -x proxy.wireless.rmit.edu.au:8080"
+  ""let command = "curl -L -s -k -x proxy.wireless.rmit.edu.au:8080"
+    let command = "curl -L -s -k"
   if a:returnheader
     let command .= " -i"
   endif
