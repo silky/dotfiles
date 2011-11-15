@@ -3,7 +3,8 @@
 " Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
 "
 " Author: Noon Silk <noonsilk@gmail.com>
-" Last Modified: 19-Oct-2011
+" Last Modified: 11-Nov-2011
+" Location: https://github.com/silky/dotfiles/blob/master/.vimrc
 
 " Initialisation -------------------------------------------------------------- {{{
 
@@ -23,7 +24,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 8
+set guifont=Akkurat-Mono\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -320,7 +321,7 @@ noremap <Tab>k <C-w>k
 noremap <Tab>l <C-w>l
 noremap <Tab><Tab> <C-w>p
 
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " Compile and run LaTeX file in one step
 map <leader>lp ,ll<CR>,lv<CR>
