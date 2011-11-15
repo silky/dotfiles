@@ -28,10 +28,11 @@ set guifont=Akkurat-Mono\ 8
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set winheight=30 " Autosize window to this height.
+
 set encoding=utf-8
 set modelines=0
 
-set autoindent
 set cpoptions+=I "do NOT revert tabbing I have specifically set.
 set cindent
 set smartcase       " Case insensitive searches become sensitive with capitals
@@ -236,6 +237,11 @@ let g:CommandTMaxHeight = 20
 noremap <tab>e :CommandT<cr>
 
 "   }}}
+"   > EasyMotion ____________ {{{
+
+let g:EasyMotion_leader_key = '.'
+
+"   }}}
 "   > Gundo _________________ {{{
 
 noremap <leader>gu :GundoToggle<CR>
@@ -281,21 +287,23 @@ let g:vimwiki_list = [{'path': '~/research/diary'}]
 "   }}}
 " }}}
 " Quick editing of some typical files ----------------------------------------- {{{
+
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
 
+" r for repeat
+noremap r .
+
 " ConqueTerm
-noremap rr :ConqueTerm python<CR>
-noremap rbr :ConqueTerm bpython<CR>
+"noremap rr :ConqueTerm python<CR>
+"noremap rbr :ConqueTerm bpython<CR>
 
 noremap ' `
 noremap ` <C-^>
 noremap ; :
-
-"set winwidth=120
-set winheight=30 " Autosize window to this height.
 
 nnoremap <Space> za
 
@@ -303,6 +311,7 @@ nnoremap <Space> za
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+imap <Home> <Esc>^i
 
 "   }}}
 "   > Leaders _______________ {{{
@@ -311,6 +320,8 @@ let mapleader=','
 let maplocalleader='\\' " TODO: Confirm what this is about.
 
 map <leader>tl <Plug>VimwikiToggleListItem
+map <leader>rw <Plug>VimwikiIndex
+
 map <leader>u :call HandleURL()<CR>
 
 " Window Navigation
@@ -320,6 +331,7 @@ noremap <Tab>k <C-w>k
 noremap <Tab>l <C-w>l
 noremap <Tab><Tab> <C-w>p
 
+" Clear highlights from search
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " Compile and run LaTeX file in one step
@@ -330,6 +342,8 @@ noremap <leader>s :mks! ~/.last_session.vim \| echo 'Session saved.'<CR>
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" Open vimwiki
 
 "   }}}
 " }}}
