@@ -361,8 +361,4 @@ endfunction
 command! Gtta Gtt ~/dev
 command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
 
-" New command to make grep open it's findings in a quickfix window; there should
-" surely be a setting in vim to do this, but I tried to find it and couldn't. Note
-" that this will open a quickfix window even if the search failed.
-command! -nargs=+ G :grep <args> | copen
 " }}}
