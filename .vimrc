@@ -314,7 +314,7 @@ nnoremap N Nzzzv
 noremap <Home> <Esc>^
 
 " 'op' pressed at the same time will do a paste
-Arpeggioimap op <C-R>0
+Arpeggioimap op <C-R>"
 
 "   }}}
 "   > Leaders _______________ {{{
