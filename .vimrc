@@ -311,7 +311,10 @@ nnoremap <Space> za
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-imap <Home> <Esc>^i
+noremap <Home> <Esc>^
+
+" 'op' pressed at the same time will do a paste
+Arpeggioimap op <C-R>0
 
 "   }}}
 "   > Leaders _______________ {{{
