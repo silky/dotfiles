@@ -3,7 +3,7 @@
 " Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
 "
 " Author: Noon Silk <noonsilk@gmail.com>
-" Last Modified: 19-Oct-2011
+" Location: https://github.com/silky/dotfiles/blob/master/.vimrc
 
 " Initialisation -------------------------------------------------------------- {{{
 
@@ -158,6 +158,7 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+
 " }}}
 " Filetype-specific stuff ----------------------------------------------------- {{{
 "   > Javascript ____________ {{{
@@ -286,11 +287,6 @@ let g:vimwiki_list = [{'path': '~/research/diary'}]
 
 "   }}}
 " }}}
-" Quick editing of some typical files ----------------------------------------- {{{
-
-nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
-
-" }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
 
@@ -303,6 +299,8 @@ noremap r .
 
 noremap ' `
 noremap ` <C-^>
+
+" Faster way to get into command mode.
 noremap ; :
 
 nnoremap <Space> za
