@@ -61,7 +61,7 @@ set autowrite
 " > cindent, cinkeys, etc
 " > set terminal size (columns, etc) in .gvimrc
 
-set guioptions=aegimtr
+set guioptions=aegimt
 
 " Consider highly-configuring 'guicursor'.
 
