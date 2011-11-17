@@ -344,7 +344,8 @@ noremap <leader>s :mks! ~/.last_session.vim \| echo 'Session saved.'<CR>
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" Open vimwiki
+" Perform search in current directory for todos.
+noremap <silent> <leader>gt :Gtt .<cr>
 
 "   }}}
 " }}}
@@ -373,7 +374,6 @@ endfunction
 
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
-command! Gtta Gtt ~/dev
 command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
 
 " }}}
