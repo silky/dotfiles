@@ -67,6 +67,8 @@ set guioptions=aegimt
 
 set completeopt=longest,menuone,preview " Review
 
+" set tags+=$HOME/.vim/tags/clive.tags
+
 " 	> Tabs __________________ {{{
 
 set smarttab
@@ -286,6 +288,14 @@ let g:ConqueTerm_SessionSupport = 0
 let g:vimwiki_list = [{'path': '~/research/diary'}]
 
 "   }}}
+"   > Tagbar ________________ {{{
+
+let g:Tlist_WinWidth=50
+let g:Tlist_Use_Right_Window=1
+let g:tagbar_width=50
+let g:tagbar_autofocus = 1
+
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
@@ -346,6 +356,13 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Perform search in current directory for todos.
 noremap <silent> <leader>gt :Gtt .<cr>
+
+" TagList
+" noremap <silent> <leader>f :TagbarToggle<cr>
+noremap <silent> <leader>f :TlistToggle<cr>
+"
+"
+
 
 "   }}}
 " }}}
