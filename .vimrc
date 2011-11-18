@@ -3,7 +3,6 @@
 " Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
 "
 " Author: Noon Silk <noonsilk@gmail.com>
-" Last Modified: 11-Nov-2011
 " Location: https://github.com/silky/dotfiles/blob/master/.vimrc
 
 " Initialisation -------------------------------------------------------------- {{{
@@ -24,15 +23,16 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 10
+set guifont=Akkurat-Mono\ 8
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set winheight=30 " Autosize window to this height.
+
 set encoding=utf-8
 set modelines=0
 
-set autoindent
 set cpoptions+=I "do NOT revert tabbing I have specifically set.
 set cindent
 set smartcase       " Case insensitive searches become sensitive with capitals
@@ -61,11 +61,13 @@ set autowrite
 " > cindent, cinkeys, etc
 " > set terminal size (columns, etc) in .gvimrc
 
-set guioptions=aegimtr
+set guioptions=aegimt
 
 " Consider highly-configuring 'guicursor'.
 
 set completeopt=longest,menuone,preview " Review
+
+" set tags+=$HOME/.vim/tags/clive.tags
 
 " 	> Tabs __________________ {{{
 
@@ -158,6 +160,7 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+
 " }}}
 " Filetype-specific stuff ----------------------------------------------------- {{{
 "   > Javascript ____________ {{{
@@ -237,6 +240,11 @@ let g:CommandTMaxHeight = 20
 noremap <tab>e :CommandT<cr>
 
 "   }}}
+"   > EasyMotion ____________ {{{
+
+let g:EasyMotion_leader_key = '.'
+
+"   }}}
 "   > Gundo _________________ {{{
 
 noremap <leader>gu :GundoToggle<CR>
@@ -280,23 +288,35 @@ let g:ConqueTerm_SessionSupport = 0
 let g:vimwiki_list = [{'path': '~/research/diary'}]
 
 "   }}}
-" }}}
-" Quick editing of some typical files ----------------------------------------- {{{
-nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e ~/.vimrc<cr>
+"   > Tagbar ________________ {{{
+
+let g:Tlist_WinWidth=50
+let g:Tlist_Use_Right_Window=1
+let g:tagbar_width=50
+let g:tagbar_autofocus = 1
+
+"   }}}
+"   > PyFlakes ______________ {{{
+
+let g:pyflakes_use_quickfix = 0
+
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
 
+" r for repeat
+noremap r .
+
 " ConqueTerm
-noremap rr :ConqueTerm python<CR>
-noremap rbr :ConqueTerm bpython<CR>
+"noremap rr :ConqueTerm python<CR>
+"noremap rbr :ConqueTerm bpython<CR>
 
 noremap ' `
 noremap ` <C-^>
-noremap ; :
 
-"set winwidth=120
-set winheight=30 " Autosize window to this height.
+" Faster way to get into command mode.
+noremap ; :
 
 nnoremap <Space> za
 
@@ -304,6 +324,14 @@ nnoremap <Space> za
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+noremap <Home> <Esc>^
+
+" Remap 'gf' to begin looking for the particular tag.
+noremap gf :MyTag 
+
+
+" 'op' pressed at the same time will do a paste
+" Arpeggioimap op <C-R>"
 
 "   }}}
 "   > Leaders _______________ {{{
@@ -312,6 +340,8 @@ let mapleader=','
 let maplocalleader='\\' " TODO: Confirm what this is about.
 
 map <leader>tl <Plug>VimwikiToggleListItem
+map <leader>rw <Plug>VimwikiIndex
+
 map <leader>u :call HandleURL()<CR>
 
 " Window Navigation
@@ -321,6 +351,7 @@ noremap <Tab>k <C-w>k
 noremap <Tab>l <C-w>l
 noremap <Tab><Tab> <C-w>p
 
+" Clear highlights from search
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " Compile and run LaTeX file in one step
@@ -331,6 +362,16 @@ noremap <leader>s :mks! ~/.last_session.vim \| echo 'Session saved.'<CR>
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" Perform search in current directory for todos.
+noremap <silent> <leader>gt :Gtt .<cr>
+
+" TagList
+" noremap <silent> <leader>f :TagbarToggle<cr>
+noremap <silent> <leader>f :TlistToggle<cr>
+"
+"
+
 
 "   }}}
 " }}}
@@ -359,7 +400,8 @@ endfunction
 
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
-command! Gtta Gtt ~/dev
 command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
 
+" Run a tag search and then focus the screen.
+command! -nargs=1 -complete=tag MyTag :tag <args> | :normal zz
 " }}}
