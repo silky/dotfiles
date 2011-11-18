@@ -40,6 +40,9 @@ highlight Folded ctermfg=216 guibg=#3d5354 guifg=white
 highlight Pmenu guifg=#e1e1e1 guibg=black
 highlight PmenuSel guifg=black guibg=#e01b4c
 
+highlight FoldColumn guibg=black guifg=#eaeaea
+highlight MyTagListFileName guifg=#e01b4c
+
 " Highlighting for LaTeX. The various options can be found in
 " the: </usr/share/vim/vim73/syntax/tex.vim> file.
 "
