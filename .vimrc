@@ -296,6 +296,11 @@ let g:tagbar_width=50
 let g:tagbar_autofocus = 1
 
 "   }}}
+"   > PyFlakes ______________ {{{
+
+let g:pyflakes_use_quickfix = 0
+
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
@@ -321,8 +326,12 @@ nnoremap N Nzzzv
 
 noremap <Home> <Esc>^
 
+" Remap 'gf' to begin looking for the particular tag.
+noremap gf :MyTag 
+
+
 " 'op' pressed at the same time will do a paste
-Arpeggioimap op <C-R>"
+" Arpeggioimap op <C-R>"
 
 "   }}}
 "   > Leaders _______________ {{{
@@ -393,4 +402,6 @@ endfunction
 " some source dir, and posts the results in the quickfix window.
 command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
 
+" Run a tag search and then focus the screen.
+command! -nargs=1 -complete=tag MyTag :tag <args> | :normal zz
 " }}}
