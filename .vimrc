@@ -288,10 +288,14 @@ let g:ConqueTerm_SessionSupport = 0
 let g:vimwiki_list = [{'path': '~/research/diary'}]
 
 "   }}}
-"   > Tagbar ________________ {{{
+"   > Taglist _______________ {{{
 
 let g:Tlist_WinWidth=50
 let g:Tlist_Use_Right_Window=1
+
+" Auto-updating of taglist sucks (really slow), so disabling it and will
+" need to update the list manually with 'TlistUpdate'
+let g:Tlist_Auto_Update=0
 let g:tagbar_width=50
 let g:tagbar_autofocus = 1
 
@@ -327,7 +331,7 @@ nnoremap N Nzzzv
 noremap <Home> <Esc>^
 
 " Remap 'gf' to begin looking for the particular tag.
-noremap gf :MyTag 
+noremap gf :TlistUpdate \| MyTag 
 
 
 " 'op' pressed at the same time will do a paste
