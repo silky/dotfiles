@@ -28,6 +28,7 @@ set guifont=Akkurat-Mono\ 8
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set t_Co=256
 set winheight=30 " Autosize window to this height.
 
 set encoding=utf-8
@@ -331,7 +332,7 @@ nnoremap N Nzzzv
 noremap <Home> <Esc>^
 
 " Remap 'gf' to begin looking for the particular tag.
-noremap gf :TlistUpdate \| MyTag 
+noremap gf :MyTag 
 
 
 " 'op' pressed at the same time will do a paste
