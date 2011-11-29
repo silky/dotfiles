@@ -34,7 +34,7 @@ highlight VertSplit                                   guibg=black guifg=black
 highlight Normal									  guifg=#e1e1e1 guibg=#202020
 highlight Search				ctermbg=3							guibg=#c0c000
 highlight Visual guifg=White guibg=#c000bd
-highlight Folded ctermfg=216 guibg=#3d5354 guifg=white
+highlight Folded ctermfg=216 guibg=#252525 guifg=#de355f
 
 " Todo: Fix this.
 highlight Pmenu guifg=#e1e1e1 guibg=black
