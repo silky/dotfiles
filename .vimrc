@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 8
+set guifont=Akkurat-Mono\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
