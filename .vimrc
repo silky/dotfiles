@@ -28,6 +28,7 @@ set guifont=Akkurat-Mono\ 10
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set wildignore+=*.pyc,*.pdf,.git,.svn
 set winheight=30 " Autosize window to this height.
 
 set encoding=utf-8
@@ -238,6 +239,7 @@ set grepprg=grep\ -nH\ $*
 let g:CommandTMaxHeight = 20
 
 noremap <tab>e :CommandT<cr>
+noremap <tab>f :CommandTTag<cr>
 
 "   }}}
 "   > EasyMotion ____________ {{{
