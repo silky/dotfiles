@@ -81,8 +81,8 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
+alias ls='pwd && ls --color=auto'
 #alias l='ls -CF'
-alias cdd='g' # cdd to go to saved directory of bashmarks.
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -115,7 +115,7 @@ alias matlab='/etc/matlab/bin/matlab -glnx86 &'
 MWE_ARCH=glnx86
 export MWE_ARCH
 
-alias less=/usr/share/vim/vim73/macros/less.sh
+#alias less=/usr/share/vim/vim73/macros/less.sh
 
 # prompt colour stuff
 txtblk='\e[0;30m' # Black - Regular
@@ -152,7 +152,11 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
-PS1="\[$txtpur\]\d \@ \[$txtwht\]\u@\[$txtylw\]\w>$txtrst"
+prompt_status() { if [ $? == 0 ]; then echo '>'; else echo '!'; fi; }
+
+PROMPT_COMMAND='RET=$?; if [[ $RET -eq 0 ]]; then echo -ne ""; else echo -ne "\033[0;31m$RET\033[0m "; fi;'
+
+PS1="\[$txtpur\]\d \@ \[$txtwht\]\u@\[$txtylw\]/\W>$txtrst"
 
 # Path for latex live
 PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH;
@@ -160,6 +164,8 @@ PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH;
 # Path for my own utils
 PATH=/home/noon/dev/silky-github/utils/find-todo:$PATH;
 
+export TERM='xterm-256color'
+
 export PATH
 
-
+# eval ssh-agent

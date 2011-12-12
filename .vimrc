@@ -58,18 +58,17 @@ set shiftround
 set notimeout
 set nottimeout
 set autowrite
+set foldlevelstart=1
 
 " TODO: Consider
 " > cindent, cinkeys, etc
 " > set terminal size (columns, etc) in .gvimrc
 
-set guioptions=aegimt
+set guioptions=aegit
 
 " Consider highly-configuring 'guicursor'.
 
 set completeopt=longest,menuone,preview " Review
-
-" set tags+=$HOME/.vim/tags/clive.tags
 
 " 	> Tabs __________________ {{{
 
@@ -372,13 +371,6 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Perform search in current directory for todos.
 noremap <silent> <leader>gt :Gtt .<cr>
-
-" TagList
-" noremap <silent> <leader>f :TagbarToggle<cr>
-noremap <silent> <leader>f :TlistToggle<cr>
-"
-"
-
 
 "   }}}
 " }}}
