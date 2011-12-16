@@ -241,6 +241,8 @@ let g:CommandTMaxHeight = 20
 noremap <tab>e :CommandT<cr>
 noremap <tab>f :CommandTTag<cr>
 
+let g:command_t_tag_include_filenames = 0
+
 "   }}}
 "   > EasyMotion ____________ {{{
 
