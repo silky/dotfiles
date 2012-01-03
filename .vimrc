@@ -143,7 +143,7 @@ set virtualedit+=block
 " }}}
 " Folding --------------------------------------------------------------------- {{{
 
-set foldlevelstart=0
+set foldlevelstart=99 " All folds open
 
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
@@ -360,7 +360,10 @@ let maplocalleader='\\' " TODO: Confirm what this is about.
 map <leader>tl <Plug>VimwikiToggleListItem
 map <leader>rw <Plug>VimwikiIndex
 
-map <leader>u :call HandleURL()<CR>
+" Close quickfix and preview windows, if open
+map <silent> <leader>cw :ccl \| pc<cr>
+
+map <silent> <leader>u :call HandleURL()<CR>
 
 " Window Navigation
 noremap <Tab>h <C-w>h
