@@ -59,6 +59,11 @@ set notimeout
 set nottimeout
 set autowrite
 set foldlevelstart=1
+set shortmess=I
+
+" cscope
+"set cscopetagorder=1
+"set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 " TODO: Consider
 " > cindent, cinkeys, etc
@@ -307,6 +312,11 @@ let g:tagbar_autofocus = 1
 "   > PyFlakes ______________ {{{
 
 let g:pyflakes_use_quickfix = 0
+
+"   }}}
+"   > InlineEdit ____________ {{{
+
+noremap <silent> <leader>e :InlineEdit
 
 "   }}}
 " }}}

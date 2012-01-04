@@ -1,0 +1,9 @@
+b:inline_edit_autowrite	inline_edit.txt	/*b:inline_edit_autowrite*
+g:inline_edit_patterns	inline_edit.txt	/*g:inline_edit_patterns*
+inline-edit	inline_edit.txt	/*inline-edit*
+inline-edit-contents	inline_edit.txt	/*inline-edit-contents*
+inline-edit-extending	inline_edit.txt	/*inline-edit-extending*
+inline-edit-installation	inline_edit.txt	/*inline-edit-installation*
+inline-edit-issues	inline_edit.txt	/*inline-edit-issues*
+inline-edit-settings	inline_edit.txt	/*inline-edit-settings*
+inline-edit-usage	inline_edit.txt	/*inline-edit-usage*
