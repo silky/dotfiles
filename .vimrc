@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 8
+set guifont=Akkurat-Mono\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -35,7 +35,7 @@ set winheight=30 " Autosize window to this height.
 set encoding=utf-8
 set modelines=0
 
-set cpoptions+=I "do NOT revert tabbing I have specifically set.
+" set cpoptions+=I "do NOT revert tabbing I have specifically set.
 set cindent
 set smartcase       " Case insensitive searches become sensitive with capitals
 
@@ -294,14 +294,17 @@ let g:vimwiki_list = [{'path': '~/research/diary'}]
 "   }}}
 "   > Taglist _______________ {{{
 
-let g:Tlist_WinWidth=50
-let g:Tlist_Use_Right_Window=1
 
-" Auto-updating of taglist sucks (really slow), so disabling it and will
-" need to update the list manually with 'TlistUpdate'
-let g:Tlist_Auto_Update=0
-let g:tagbar_width=50
-let g:tagbar_autofocus = 1
+" Removed all of this in favour of CommandTForTags.
+"
+" let g:Tlist_WinWidth=50
+" let g:Tlist_Use_Right_Window=1
+
+" " Auto-updating of taglist sucks (really slow), so disabling it and will
+" " need to update the list manually with 'TlistUpdate'
+" let g:Tlist_Auto_Update=0
+" let g:tagbar_width=50
+" let g:tagbar_autofocus = 1
 
 "   }}}
 "   > PyFlakes ______________ {{{
