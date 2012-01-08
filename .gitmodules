@@ -22,3 +22,9 @@
 [submodule ".vim/bundle/easymotion"]
 	path = .vim/bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/linediff"]
+	path = .vim/bundle/linediff
+	url = git://github.com/AndrewRadev/linediff.vim.git
+[submodule ".vim/bundle/tabman"]
+	path = .vim/bundle/tabman
+	url = https://github.com/kien/tabman.vim.git
