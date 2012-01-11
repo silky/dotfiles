@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 8
+set guifont=Akkurat-Mono\ 9
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -316,7 +316,7 @@ let g:pyflakes_use_quickfix = 0
 "   }}}
 "   > InlineEdit ____________ {{{
 
-noremap <silent> <leader>e :InlineEdit
+noremap <silent> <leader>e :InlineEdit<cr>
 
 "   }}}
 " }}}
