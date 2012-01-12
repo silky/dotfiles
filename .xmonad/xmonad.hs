@@ -32,7 +32,7 @@ myTerminal = "/usr/bin/gnome-terminal"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
+myWorkspaces = ["1:vim","2:op","3:misc"] ++ map show [4..9]
  
 
 ------------------------------------------------------------------------
@@ -50,18 +50,21 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Chromium"       --> doShift "2:web"
-    , resource  =? "desktop_window" --> doIgnore
-    , className =? "Galculator"     --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , className =? "Google-chrome"  --> doShift "2:web"
-    , resource  =? "gpicview"       --> doFloat
-    , resource  =? "kdesktop"       --> doIgnore
-    , className =? "MPlayer"        --> doFloat
-    , resource  =? "skype"          --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
-    , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
+    [
+    -- Commented out because I don't care about these for now.
+    --
+    -- className =? "Chromium"       --> doShift "2:web"
+    -- , resource  =? "desktop_window" --> doIgnore
+    -- , className =? "Galculator"     --> doFloat
+    -- , className =? "Gimp"           --> doFloat
+    -- , className =? "Google-chrome"  --> doShift "2:web"
+    -- , resource  =? "gpicview"       --> doFloat
+    -- , resource  =? "kdesktop"       --> doIgnore
+    -- , className =? "MPlayer"        --> doFloat
+    -- , resource  =? "skype"          --> doFloat
+    -- , className =? "VirtualBox"     --> doShift "4:vm"
+    -- , className =? "Xchat"          --> doShift "5:media"
+    isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
 ------------------------------------------------------------------------
@@ -87,15 +90,15 @@ myLayout = avoidStruts (
 -- Colors and borders
 -- Currently based on the ir_black theme.
 --
-myNormalBorderColor  = "#7c7c7c"
-myFocusedBorderColor = "#ffb6b0"
+myNormalBorderColor  = "#000000"
+myFocusedBorderColor = "#e01b4c"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
-    activeBorderColor = "#7C7C7C",
+    activeBorderColor = "#e01b4c",
     activeTextColor = "#CEFFAC",
     activeColor = "#000000",
-    inactiveBorderColor = "#7C7C7C",
+    inactiveBorderColor = "#000000",
     inactiveTextColor = "#EEEEEE",
     inactiveColor = "#000000"
 }
@@ -136,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "exe=`dmenu_path | yeganesh` && eval \"exec $exe\"")
+     spawn "exe=`dmenu_path` && eval \"exec $exe\"")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
@@ -325,13 +328,13 @@ myStartupHook = return ()
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $ defaults {
-      logHook = dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc
-          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "}
-      , manageHook = manageDocks <+> myManageHook
-      , startupHook = setWMName "LG3D"
+      -- logHook = dynamicLogWithPP $ xmobarPP {
+      --       ppOutput = hPutStrLn xmproc
+      --     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+      --     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+      --     , ppSep = "   "}
+      -- , manageHook = manageDocks <+> myManageHook
+      startupHook = setWMName "LG3D"
   }
  
 
@@ -354,7 +357,7 @@ defaults = defaultConfig {
     focusedBorderColor = myFocusedBorderColor,
  
     -- key bindings
-    keys               = myKeys,
+    -- keys               = myKeys,
     mouseBindings      = myMouseBindings,
  
     -- hooks, layouts
