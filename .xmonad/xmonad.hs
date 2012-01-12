@@ -25,7 +25,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/gnome-terminal"
+myTerminal = "/usr/bin/gnome-terminal --hide-menubar"
 
 
 ------------------------------------------------------------------------
@@ -40,7 +40,7 @@ myWorkspaces = ["1:vim","2:op","3:misc"] ++ map show [4..9]
 -- Execute arbitrary actions and WindowSet manipulations when managing
 -- a new window. You can use this to, for example, always float a
 -- particular program, or have a client always appear on a particular
--- workspace.
+-- workspacec
 --
 -- To find the property name associated with a program, use
 -- > xprop | grep WM_CLASS
@@ -139,18 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "exe=`dmenu_path` && eval \"exec $exe\"")
-
-  -- Take a screenshot in select mode.
-  -- After pressing this key binding, click a window, or draw a rectangle with
-  -- the mouse.
-  , ((modMask .|. shiftMask, xK_p),
-     spawn "select-screenshot")
-
-  -- Take full screenshot in multi-head mode.
-  -- That is, take a screenshot of everything you see.
-  , ((modMask .|. controlMask .|. shiftMask, xK_p),
-     spawn "screenshot")
+     spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
   -- Mute volume.
   , ((0, 0x1008FF12),
@@ -257,7 +246,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Restart xmonad.
   , ((modMask, xK_q),
-     restart "xmonad" True)
+     spawn "xmonad --recompile; xmonad --restart")
   ]
   ++
  
