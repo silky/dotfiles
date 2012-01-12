@@ -167,4 +167,5 @@ export TERM='xterm-256color'
 
 export PATH
 
-# eval ssh-agent
+# eval 'ssh-agent'
+shopt -s globstar
