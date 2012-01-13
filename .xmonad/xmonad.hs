@@ -14,6 +14,8 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+import XMonad.Layout.OneBig
+import XMonad.Layout.Mosaic
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
@@ -80,11 +82,12 @@ myManageHook = composeAll
 myLayout = avoidStruts (
     Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2)) |||
-    tabbed shrinkText tabConfig |||
+    -- tabbed shrinkText tabConfig |||
+    OneBig (3/4) (3/4) |||
+    mosaic 2 [3,2] |||
     Full |||
     spiral (6/7)) |||
     noBorders (fullscreenFull Full)
-
 
 ------------------------------------------------------------------------
 -- Colors and borders
@@ -169,6 +172,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((0, 0x1008FF2C),
      spawn "eject -T")
 
+  , ((modMask, xK_a), sendMessage Taller)
+
+  , ((modMask, xK_z), sendMessage Wider)
+
+  , ((modMask, xK_r), sendMessage Reset)
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
