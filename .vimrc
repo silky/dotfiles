@@ -432,3 +432,11 @@ command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/f
 " Run a tag search and then focus the screen.
 command! -nargs=1 -complete=tag MyTag :tag <args> | :normal zz
 " }}}
+" Wrapup ---------------------------------------------------------------------- {{{
+
+" This does any things that don't need to be in the
+" general config for all my machines; say setting font
+" sizes.
+source ~/.vimrc.local
+
+" }}}
