@@ -5,6 +5,8 @@
 -- Author: Noon Silk
 -- Location: http://github.com/silky/dotfiles
 
+-- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_Config.hs
+-- http://www.haskell.org/wikiupload/9/9c/NNoeLLs_Desktop_2011-08-31.png
 import System.IO
 import System.Exit
 import XMonad
@@ -22,6 +24,8 @@ import XMonad.Layout.LayoutCombinators hiding ((|||))
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
 import XMonad.Layout.ToggleLayouts
+import XMonad.Actions.WindowBringer
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -50,8 +54,12 @@ layouts = [ Layout tiled
      -- Percent of screen to increment by when resizing panes
      delta   = 2/100
 
+-- myLayout = Select layouts
+-- myLayout = Layout $ windowNavigation $
+--                 toggleLayouts (noBorders Full) $
+--                 Select layouts
 
--- myLayout = toggleLayouts Full (Tall 1 (3/100) (1/2))
+myLayout = toggleLayouts Full (Tall 1 (3/100) (1/2))
 
 myKeys   = [
     -- mod4Mask is the windows key.
@@ -65,8 +73,11 @@ myKeys   = [
 --
 main = xmonad $ defaultConfig {
     borderWidth            = 1
-    , terminal             = "/usr/bin/konsole"
+    , terminal             = "/usr/bin/urxvt"
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
-} `additionalKeys` myKeys                                            
+} `additionalKeys` myKeys `additionalKeysP` [
+      ("M-g", gotoMenu)
+    , ("M-b", bringMenu)
+    ]

@@ -2,8 +2,8 @@ Xcursor.theme:    Vanilla-DMZ-AA
 
 !urxvt color scheme:
 
-URxvt*background: #2B2B2B
-URxvt*foreground: #DEDEDE
+URxvt*background: #121212
+URxvt*foreground: #4E9A06
 
 URxvt*colorUL: #86a2b0
 
@@ -17,14 +17,14 @@ URxvt*color9  : #EF2929
 URxvt*color2  : #4E9A06
 URxvt*color10 : #8AE234
 ! yellow
-URxvt*color3  : #C4A000
-URxvt*color11 : #FCE94F
+URxvt*color3  : #cf9206
+URxvt*color11 : #cf9206
 ! blue
 URxvt*color4  : #3465A4
-URxvt*color12 : #729FCF
+URxvt*color12 : #3059b3
 ! magenta
-URxvt*color5  : #75507B
-URxvt*color13 : #AD7FA8
+URxvt*color5  : #783780
+URxvt*color13 : #9c3290
 ! cyan
 URxvt*color6  : #06989A
 URxvt*color14 : #34E2E2
