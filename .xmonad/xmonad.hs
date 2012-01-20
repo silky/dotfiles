@@ -29,14 +29,15 @@ import qualified Data.Map        as M
 --
 --  We are interested in changing layouts in two ways. One is the
 --  typical iteration with mod-space, the other is specific layout
---  selection through another-mod-<letter>, where the letter the
+--  selection through windows-<letter>, where the letter indicates
 --  specific layout
 
-myLayout = toggleLayouts Full (Tall 1 (3/100) (1/2))
+myLayout = toggleLayouts noBorders Full (Tall 1 (3/100) (1/2))
 myKeys   = [
     -- mod4Mask is the windows key.
      ((mod4Mask, xK_f), sendMessage (Toggle "Tall"))
    , ((mod4Mask, xK_g), sendMessage (Toggle "Full"))
+   , ((mod4Mask, xK_w), sendMessage (Toggle "mirror Tall"))
   ]  
 
 
