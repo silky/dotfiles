@@ -58,7 +58,9 @@ myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
 
 
 -- toggleLayouts is some function that takes two layouts,
--- it's sadly not a setting. Oh well.
+-- it's sadly not a setting. Oh well. This config doesn't
+-- toggle, but at least it's possible to change to specific
+-- layouts.
 
 myKeys   = [
     -- mod4Mask is the windows key.
