@@ -4,12 +4,15 @@
 --
 -- Author: Noon Silk
 -- Location: http://github.com/silky/dotfiles
-
--- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_Config.hs
--- http://www.haskell.org/wikiupload/9/9c/NNoeLLs_Desktop_2011-08-31.png
+--
+-- Inspiration:
+--  http://www.haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_Config.hs
+--  http://www.haskell.org/wikiupload/9/9c/NNoeLLs_Desktop_2011-08-31.png
+--  http://xmonad.org/xmonad-docs/xmonad/src/XMonad-Config.html
+--
 import System.IO
 import System.Exit
-import XMonad
+import XMonad hiding ( (|||) )
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -20,14 +23,16 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.OneBig
 import XMonad.Layout.Mosaic
-import XMonad.Layout.LayoutCombinators hiding ((|||))
+import XMonad.Layout.LayoutCombinators
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
 import XMonad.Layout.ToggleLayouts
 import XMonad.Actions.WindowBringer
+import XMonad.Layout.Named(named)
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
 
 -- Layout Management
 --
@@ -36,11 +41,8 @@ import qualified Data.Map        as M
 --  selection through windows-<letter>, where the letter indicates
 --  specific layout
 
-layouts :: [Layout Window]
-layouts = [ Layout tiled
-          , Layout $ Mirror tiled
-          , Layout $ spiral (3/4)
-          ]
+myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
+    ||| Full ||| spiral (3/4)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -54,26 +56,23 @@ layouts = [ Layout tiled
      -- Percent of screen to increment by when resizing panes
      delta   = 2/100
 
--- myLayout = Select layouts
--- myLayout = Layout $ windowNavigation $
---                 toggleLayouts (noBorders Full) $
---                 Select layouts
 
-myLayout = toggleLayouts Full (Tall 1 (3/100) (1/2))
+-- toggleLayouts is some function that takes two layouts,
+-- it's sadly not a setting. Oh well.
 
 myKeys   = [
     -- mod4Mask is the windows key.
-     ((mod4Mask, xK_f), sendMessage (Toggle "Tall"))
-   , ((mod4Mask, xK_g), sendMessage (Toggle "Full"))
-   , ((mod4Mask, xK_w), sendMessage (Toggle "mirror Tall"))
-  ]  
+     ((mod4Mask, xK_f), sendMessage $ JumpToLayout "Full")
+   , ((mod4Mask, xK_g), sendMessage $ JumpToLayout "C:Tiled")
+   , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
+  ]
 
 
 -- Setup
 --
 main = xmonad $ defaultConfig {
     borderWidth            = 1
-    , terminal             = "/usr/bin/urxvt"
+    , terminal             = "/usr/bin/konsole"
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
