@@ -11,11 +11,7 @@
 --  http://xmonad.org/xmonad-docs/xmonad/src/XMonad-Config.html
 --
 import System.IO
-import System.Exit
 import XMonad hiding ( (|||) )
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
@@ -28,6 +24,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
 import XMonad.Layout.ToggleLayouts
 import XMonad.Actions.WindowBringer
+import XMonad.Actions.WindowGo
 import XMonad.Layout.Named(named)
 
 import qualified XMonad.StackSet as W
@@ -42,14 +39,14 @@ import qualified Data.Map        as M
 --  specific layout
 
 myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
-    ||| Full ||| spiral (3/4)
+    ||| Full ||| named "C:Spiral" (spiral (3/4))
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
  
      -- The default number of windows in the master pane
      nmaster = 1
- 
+
      -- Default proportion of screen occupied by master pane
      ratio   = (2/(1 + (toRational(sqrt(5)::Double))))
  
@@ -67,6 +64,7 @@ myKeys   = [
      ((mod4Mask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((mod4Mask, xK_g), sendMessage $ JumpToLayout "C:Tiled")
    , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
+   , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
   ]
 
 
@@ -81,4 +79,7 @@ main = xmonad $ defaultConfig {
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
+      -- Some default "goto" operations.
+    , ("M-f", runOrRaise "firefox" (className =? "Firefox"))
+    , ("M-o", runOrRaise "gvim"    (className =? "Gvim"))
     ]
