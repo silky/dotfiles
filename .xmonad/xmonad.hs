@@ -79,6 +79,9 @@ main = xmonad $ defaultConfig {
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
+      -- Consider changing these to "Tab+", but it must be that it
+      -- doesn't interrupt anything else.
+      --
       -- Some default "goto" operations.
     , ("M-f", runOrRaise "firefox" (className =? "Firefox"))
     , ("M-o", runOrRaise "gvim"    (className =? "Gvim"))
