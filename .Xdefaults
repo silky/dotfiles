@@ -34,12 +34,12 @@ URxvt*color15 : #EEEEEC
 
 
 !bullshit for urxvt font handling
-URxvt*letterSpace: -1
+URxvt*letterSpace: -3
 
 !urxvt fonts: 
 
-URxvt*font: xft:Akkurat Mono:pixelsize=11:dpi=96:antialias=true:hinting=true
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:dpi=96:antialias=true:hinting=true
+URxvt*font: xft:Akkurat Mono:pixelsize=12:dpi=96:antialias=true:hinting=true
+URxvt*boldFont: xft:Akkurat Mono:bold:pixelsize=12:dpi=96:antialias=true:hinting=true
 
 !urxvt extensions:
 
