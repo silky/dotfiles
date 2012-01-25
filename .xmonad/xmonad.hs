@@ -65,6 +65,9 @@ myKeys   = [
    , ((mod4Mask, xK_g), sendMessage $ JumpToLayout "C:Tiled")
    , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
    , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
+
+   -- The "Menu" key next to the Windows key
+   , ((0, xK_Menu), runOrRaise "firefox" (className =? "Firefox"))
   ]
 
 
