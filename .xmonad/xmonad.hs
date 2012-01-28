@@ -13,6 +13,7 @@
 import System.IO
 import XMonad hiding ( (|||) )
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
@@ -20,12 +21,13 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.OneBig
 import XMonad.Layout.Mosaic
 import XMonad.Layout.LayoutCombinators
+import XMonad.Layout.Named(named)
+import XMonad.Layout.ToggleLayouts
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
-import XMonad.Layout.ToggleLayouts
 import XMonad.Actions.WindowBringer
 import XMonad.Actions.WindowGo
-import XMonad.Layout.Named(named)
+import XMonad.Actions.CopyWindow
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -39,7 +41,7 @@ import qualified Data.Map        as M
 --  specific layout
 
 myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
-    ||| Full ||| named "C:Spiral" (spiral (3/4))
+    ||| noBorders Full ||| named "C:Spiral" (spiral (3/4))
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -67,13 +69,17 @@ myKeys   = [
    , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
 
    -- The "Menu" key next to the Windows key
-   , ((0, xK_Menu), runOrRaise "firefox" (className =? "Firefox"))
+   , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py")
+
+   --
+   , ((mod4Mask, xK_v), windows copyToAll)
+   , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
   ]
 
 
 -- Setup
 --
-main = xmonad $ defaultConfig {
+main = xmonad $ ewmh defaultConfig {
     borderWidth            = 1
     , terminal             = "/usr/bin/konsole"
     , normalBorderColor    = "#000000"
