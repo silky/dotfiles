@@ -69,7 +69,7 @@ myKeys   = [
    , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
 
    -- The "Menu" key next to the Windows key
-   , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py")
+   , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    --
    , ((mod4Mask, xK_v), windows copyToAll)
