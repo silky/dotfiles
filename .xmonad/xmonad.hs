@@ -86,7 +86,14 @@ main = xmonad $ ewmh defaultConfig {
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
+
+    -- Update pointer to be in the center on focus; I tried
+    -- it being the 'Nearest' option, but this was not good
+    -- because it still contains the bug wherein you shift
+    -- to a new window and focus doesn't change.
+    --
     , logHook              = updatePointer (Relative 0.5 0.5)
+
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
