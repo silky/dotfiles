@@ -28,6 +28,7 @@ import XMonad.Util.EZConfig
 import XMonad.Actions.WindowBringer
 import XMonad.Actions.WindowGo
 import XMonad.Actions.CopyWindow
+import XMonad.Actions.UpdatePointer
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -85,9 +86,11 @@ main = xmonad $ ewmh defaultConfig {
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
+    , logHook              = updatePointer (Relative 0.5 0.5)
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
+    , ("M-0", spawn "notify-send \"`date '+%I:%M %p %A, %b %d %Y'`\"")
       -- Consider changing these to "Tab+", but it must be that it
       -- doesn't interrupt anything else.
       --
