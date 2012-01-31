@@ -296,6 +296,12 @@ let g:ConqueTerm_SessionSupport = 0
 
 let g:vimwiki_list = [{'path': '~/research/diary'}]
 
+augroup ft_vimwiki
+    au!
+
+    au Filetype vimwiki nmap l <Plug>VimwikiNextLink
+    au Filetype vimwiki nmap L <Plug>VimwikiPrevLink
+augroup END
 "   }}}
 "   > Taglist _______________ {{{
 
