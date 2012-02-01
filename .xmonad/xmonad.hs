@@ -65,7 +65,7 @@ myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
 myKeys   = [
     -- mod4Mask is the windows key.
      ((mod4Mask, xK_f), sendMessage $ JumpToLayout "Full")
-   , ((mod4Mask, xK_g), sendMessage $ JumpToLayout "C:Tiled")
+   , ((mod4Mask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
    , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
    , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
 
@@ -103,5 +103,5 @@ main = xmonad $ ewmh defaultConfig {
       --
       -- Some default "goto" operations.
     , ("M-f", runOrRaise "firefox" (className =? "Firefox"))
-    , ("M-o", runOrRaise "gvim"    (className =? "Gvim"))
+    , ("M-v", runOrRaise "gvim"    (className =? "Gvim"))
     ]

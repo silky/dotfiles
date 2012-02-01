@@ -92,7 +92,7 @@ set formatoptions=qrn1c
 " Backups --------------------------------------------------------------------- {{{
 
 set undodir=~/.tmp/vim/undo/      " undo files
-set backupdir=~/.tmp/vim/backup/ " backups
+set backupdir=~/.tmp/vim/backup/  " backups
 set directory=~/.tmp/vim/swap/    " swap files
 set backup                        " enabled
 
@@ -201,6 +201,7 @@ augroup ft_vim
 
     au FileType vim setlocal foldmethod=marker
     au FileType help setlocal textwidth=78
+    au FileType vim setlocal foldlevel=0
 
     " TODO: Confirm what this does.
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
@@ -294,11 +295,13 @@ let g:ConqueTerm_SessionSupport = 0
 
 " Configure my wikis
 
-let g:vimwiki_list = [{'path': '~/research/diary'}]
+let g:vimwiki_list = [{'path': '~/research/diary'}, 
+            \ {'path': '~/personal/notes'}]
 
 augroup ft_vimwiki
     au!
 
+    " Remap next/prev as my tab key does other things.
     au Filetype vimwiki nmap l <Plug>VimwikiNextLink
     au Filetype vimwiki nmap L <Plug>VimwikiPrevLink
 augroup END
