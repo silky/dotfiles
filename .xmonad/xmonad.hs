@@ -29,6 +29,7 @@ import XMonad.Actions.WindowBringer
 import XMonad.Actions.WindowGo
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.UpdatePointer
+import XMonad.Actions.CycleWS
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -73,9 +74,20 @@ myKeys   = [
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    --
+   , ((mod4Mask, xK_q), spawn "/bin/sh shutdown -h now")
    , ((mod4Mask, xK_v), windows copyToAll)
    , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
+
+    -- Hmm
   ]
+
+
+-- Toggle the active workspace with the 'Forward/Back' mouse buttons.
+myMouseMod = 0
+myMouseBindings x = M.fromList $
+    [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS)) -- prevWS))
+    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS)) -- nextWS)) 
+    ]
 
 
 -- Setup
@@ -86,6 +98,7 @@ main = xmonad $ ewmh defaultConfig {
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
+    , mouseBindings        = myMouseBindings
 
     -- Update pointer to be in the center on focus; I tried
     -- it being the 'Nearest' option, but this was not good
