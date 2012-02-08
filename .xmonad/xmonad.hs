@@ -9,7 +9,8 @@
 --  http://www.haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_Config.hs
 --  http://www.haskell.org/wikiupload/9/9c/NNoeLLs_Desktop_2011-08-31.png
 --  http://xmonad.org/xmonad-docs/xmonad/src/XMonad-Config.html
---
+--  https://bitbucket.org/tobyodavies/shared/src
+
 import System.IO
 import XMonad hiding ( (|||) )
 import XMonad.Hooks.SetWMName
@@ -77,16 +78,14 @@ myKeys   = [
    , ((mod4Mask, xK_q), spawn "/bin/sh shutdown -h now")
    , ((mod4Mask, xK_v), windows copyToAll)
    , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
-
-    -- Hmm
   ]
 
 
 -- Toggle the active workspace with the 'Forward/Back' mouse buttons.
 myMouseMod = 0
 myMouseBindings x = M.fromList $
-    [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS)) -- prevWS))
-    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS)) -- nextWS)) 
+    [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS))
+    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS)) 
     ]
 
 
