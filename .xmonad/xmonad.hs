@@ -45,6 +45,7 @@ import qualified Data.Map        as M
 
 myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
     ||| noBorders Full ||| named "C:Spiral" (spiral (3/4))
+    ||| named "C:Big" (OneBig (3/4) (3/4)) 
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -70,12 +71,13 @@ myKeys   = [
    , ((mod4Mask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
    , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
    , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
+   , ((mod4Mask, xK_b), sendMessage $ JumpToLayout "C:Big")
 
    -- The "Menu" key next to the Windows key
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    --
-   , ((mod4Mask, xK_q), spawn "/bin/sh shutdown -h now")
+   , ((mod4Mask, xK_q), spawn "gksu shutdown -h now")
    , ((mod4Mask, xK_v), windows copyToAll)
    , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
   ]
