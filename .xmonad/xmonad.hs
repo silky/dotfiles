@@ -20,7 +20,6 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.OneBig
-import XMonad.Layout.Mosaic
 import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Named(named)
 import XMonad.Layout.ToggleLayouts
@@ -44,7 +43,10 @@ import qualified Data.Map        as M
 --  specific layout
 
 myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
-    ||| noBorders Full ||| named "C:Spiral" (spiral (3/4))
+    ||| noBorders Full
+    --
+    -- I don't care about Spiral at the momemnt, but maybe at some point ...
+    -- ||| named "C:Spiral" (spiral (3/4))
     ||| named "C:Big" (OneBig (3/4) (3/4)) 
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -70,15 +72,17 @@ myKeys   = [
      ((mod4Mask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((mod4Mask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
    , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
-   , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "C:Spiral")
    , ((mod4Mask, xK_b), sendMessage $ JumpToLayout "C:Big")
 
    -- The "Menu" key next to the Windows key
+   -- EasyXMotion is courtesy of: https://github.com/loki42/easyxmotion
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
-   --
+   -- Obvious
    , ((mod4Mask, xK_q), spawn "gksu shutdown -h now")
-   , ((mod4Mask, xK_v), windows copyToAll)
+
+   -- Used to copy say VLC to other screens to watch movies
+   , ((mod4Mask,               xK_v), windows copyToAll)
    , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
   ]
 
