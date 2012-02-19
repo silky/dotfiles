@@ -49,7 +49,6 @@ myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
     -- ||| named "C:Spiral" (spiral (3/4))
     ||| named "C:Big" (OneBig (3/4) (3/4)) 
   where
-     -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
  
      -- The default number of windows in the master pane
@@ -76,15 +75,15 @@ myKeys   = [
    , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "C:Big")
 
    -- The "Menu" key next to the Windows key
-   -- EasyXMotion is courtesy of: https://github.com/loki42/easyxmotion
+   -- EasyXMotion is courtesy of Loki: https://github.com/loki42/easyxmotion
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
 
    -- Used to copy say VLC to other screens to watch movies
-   , ((layoutChangeModMask,               xK_v), windows copyToAll)
-   , ((layoutChangeModMask .|. shiftMask, xK_v), killAllOtherCopies)
+   , ((layoutChangeModMask, xK_v), windows copyToAll)
+   , ((layoutChangeModMask, xK_d), killAllOtherCopies)
   ]
 
 
