@@ -1,4 +1,4 @@
--- XMonad config, based on Loki Davison's: https://github.com/loki42
+-- XMonad config.
 -- This is a simple config with a focus on being able to switch between
 -- layouts easily.
 --
@@ -67,23 +67,24 @@ myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
 -- toggle, but at least it's possible to change to specific
 -- layouts.
 
+layoutChangeModMask = mod1Mask .|. shiftMask
+
 myKeys   = [
-    -- mod4Mask is the windows key.
-     ((mod4Mask, xK_f), sendMessage $ JumpToLayout "Full")
-   , ((mod4Mask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
-   , ((mod4Mask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
-   , ((mod4Mask, xK_b), sendMessage $ JumpToLayout "C:Big")
+     ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
+   , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
+   , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
+   , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "C:Big")
 
    -- The "Menu" key next to the Windows key
    -- EasyXMotion is courtesy of: https://github.com/loki42/easyxmotion
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    -- Obvious
-   , ((mod4Mask, xK_q), spawn "gksu shutdown -h now")
+   , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
 
    -- Used to copy say VLC to other screens to watch movies
-   , ((mod4Mask,               xK_v), windows copyToAll)
-   , ((mod4Mask .|. shiftMask, xK_v), killAllOtherCopies)
+   , ((layoutChangeModMask,               xK_v), windows copyToAll)
+   , ((layoutChangeModMask .|. shiftMask, xK_v), killAllOtherCopies)
   ]
 
 
@@ -109,6 +110,10 @@ main = xmonad $ ewmh defaultConfig {
     -- it being the 'Nearest' option, but this was not good
     -- because it still contains the bug wherein you shift
     -- to a new window and focus doesn't change.
+    --
+    -- Note: This breaks in GIMP for various reasons that I
+    -- don't care to investigate right now. If you have troubles
+    -- there, just comment it out (or fix it and tell me!).
     --
     , logHook              = updatePointer (Relative 0.5 0.5)
 
