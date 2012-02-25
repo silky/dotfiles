@@ -296,7 +296,8 @@ let g:ConqueTerm_SessionSupport = 0
 " Configure my wikis
 
 let g:vimwiki_list = [{'path': '~/research/diary'}, 
-            \ {'path': '~/personal/notes'}]
+            \ {'path': '~/personal/notes'},
+            \ {'path': '~/dev/otter/notes'}]
 
 augroup ft_vimwiki
     au!
