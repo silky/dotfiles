@@ -1,30 +1,33 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
+	url = git://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/gundo"]
 	path = .vim/bundle/gundo
-	url = https://github.com/sjl/gundo.vim.git
+	url = git://github.com/sjl/gundo.vim.git
 [submodule ".vim/bundle/pep8"]
 	path = .vim/bundle/pep8
-	url = https://github.com/vim-scripts/pep8.git
+	url = git://github.com/vim-scripts/pep8.git
 [submodule ".vim/bundle/tasklist"]
 	path = .vim/bundle/tasklist
-	url = https://github.com/vim-scripts/TaskList.vim.git
+	url = git://github.com/vim-scripts/TaskList.vim.git
 [submodule ".vim/bundle/ropevim"]
 	path = .vim/bundle/ropevim
-	url = https://github.com/sontek/rope-vim.git
+	url = git://github.com/sontek/rope-vim.git
 [submodule ".vim/bundle/commentary"]
 	path = .vim/bundle/commentary
-	url = https://github.com/tpope/vim-commentary.git
+	url = git://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/pydoc"]
 	path = .vim/bundle/pydoc
-	url = https://github.com/sjl/pydoc.vim.git
+	url = git://github.com/sjl/pydoc.vim.git
 [submodule ".vim/bundle/easymotion"]
 	path = .vim/bundle/easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
+	url = git://github.com/Lokaltog/vim-easymotion.git
 [submodule ".vim/bundle/linediff"]
 	path = .vim/bundle/linediff
 	url = git://github.com/AndrewRadev/linediff.vim.git
 [submodule ".vim/bundle/tabman"]
 	path = .vim/bundle/tabman
-	url = https://github.com/kien/tabman.vim.git
+	url = git://github.com/kien/tabman.vim.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://github.com/silky/Command-T.git
