@@ -1,6 +1,6 @@
 " Noons .vimrc.
 "
-" Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
+" Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim"{{{"}}}
 "
 " Author: Noon Silk <noonsilk@gmail.com>
 " Location: https://github.com/silky/dotfiles/blob/master/.vimrc
@@ -65,15 +65,8 @@ set shortmess=I
 "set cscopetagorder=1
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 
-" TODO: Consider
-" > cindent, cinkeys, etc
-" > set terminal size (columns, etc) in .gvimrc
-
 set guioptions=aegit
-
-" Consider highly-configuring 'guicursor'.
-
-set completeopt=longest,menuone,preview " Review
+set completeopt=longest,menuone,preview " TODO: Review
 
 " 	> Tabs __________________ {{{
 
@@ -272,18 +265,6 @@ let g:SuperTabLongestHighlight = 1
 "map <unique> <leader>tl <Plug>TaskList
 
 "   }}}
-"   > MiniBufExplorer _______ {{{
-
-" NOTE: I've deleted MiniBufExplorer from my bundle,
-" but may add it back at some point. I've decided tabs
-" are the One True Path, with viewing buffers at my leisure
-" via ":buffers"
-
-" Single click to open buffer.
-
-let g:miniBufExplUseSingleClick = 1
-
-"   }}}
 "   > ConqueTerm ____________ {{{
 
 " Bugfix for ConqueTerm, doesn't check for this variable being
@@ -307,21 +288,6 @@ augroup ft_vimwiki
     au Filetype vimwiki nmap <buffer> L <Plug>VimwikiPrevLink
 augroup END
 "   }}}
-"   > Taglist _______________ {{{
-
-
-" Removed all of this in favour of CommandTForTags.
-"
-" let g:Tlist_WinWidth=50
-" let g:Tlist_Use_Right_Window=1
-
-" " Auto-updating of taglist sucks (really slow), so disabling it and will
-" " need to update the list manually with 'TlistUpdate'
-" let g:Tlist_Auto_Update=0
-" let g:tagbar_width=50
-" let g:tagbar_autofocus = 1
-
-"   }}}
 "   > PyFlakes ______________ {{{
 
 let g:pyflakes_use_quickfix = 0
@@ -335,6 +301,7 @@ noremap <silent> <leader>e :InlineEdit<cr>
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
+
 
 " r for repeat
 noremap r .
@@ -370,15 +337,11 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-" 'op' pressed at the same time will do a paste
-" Arpeggioimap op <C-R>"
-
 "   }}}
 "   > Leaders _______________ {{{
 
 let mapleader=','
-let maplocalleader='\\' " TODO: Confirm what this is about.
+let maplocalleader='\\' 
 
 map <leader>tl <Plug>VimwikiToggleListItem
 map <leader>rw <Plug>VimwikiIndex
@@ -387,6 +350,9 @@ map <leader>rw <Plug>VimwikiIndex
 map <silent> <leader>cw :ccl \| pc<cr>
 
 map <silent> <leader>u :call HandleURL()<CR>
+
+" Paste from general clipboard.
+noremap <leader>p "+p
 
 " Window Navigation
 noremap <Tab>h <C-w>h
