@@ -1,6 +1,6 @@
 " Noons .vimrc.
 "
-" Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim"{{{"}}}
+" Based on Steve Losh's .vimrc: http://bitbucket.org/sjl/dotfiles/src/tip/vim
 "
 " Author: Noon Silk <noonsilk@gmail.com>
 " Location: https://github.com/silky/dotfiles/blob/master/.vimrc
@@ -28,16 +28,17 @@ set guifont=Akkurat-Mono\ 10
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set shortmess=at  " Ensure we don't get hit-enter prompts
 set t_Co=256
 set wildignore+=*.pyc,*.pdf,.git,.svn
-set winheight=30 " Autosize window to this height.
+set winheight=30  " Autosize window to this height.
 
 set encoding=utf-8
-set modelines=0
+set modelines=1
 
 " set cpoptions+=I "do NOT revert tabbing I have specifically set.
 set cindent
-set smartcase       " Case insensitive searches become sensitive with capitals
+set smartcase     " Case insensitive searches become sensitive with capitals
 
 set lazyredraw
 set showmode
@@ -59,7 +60,7 @@ set notimeout
 set nottimeout
 set autowrite
 set foldlevelstart=1
-set shortmess=I
+set noshowcmd
 
 " cscope
 "set cscopetagorder=1
@@ -77,7 +78,7 @@ set softtabstop=4
 set expandtab
 set wrap
 set textwidth=85
-set formatoptions=qrn1c
+set formatoptions=qrnc
 
 " 	}}}
 
@@ -168,6 +169,14 @@ augroup ft_javascript
 
     au FileType javascript setlocal foldmethod=marker
     au FileType javascript setlocal foldmarker={,}
+augroup END
+"   }}}
+"   > Pandoc  _______________ {{{
+augroup ft_pandoc
+    au!
+
+    au FileType pandoc setlocal nocindent
+    au FileType pandoc setlocal formatoptions=tcqron1
 augroup END
 "   }}}
 "   > Python ________________ {{{
@@ -298,6 +307,8 @@ let g:pyflakes_use_quickfix = 0
 noremap <silent> <leader>e :InlineEdit<cr>
 
 "   }}}
+"   > Vim-Pandoc ____________ {{{
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
@@ -332,8 +343,8 @@ inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
+noremap <Up> <nop>
+noremap <Down> <nop>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 

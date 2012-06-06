@@ -40,5 +40,9 @@ export PATH=/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/
 
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib:/usr/local/lib"
 
+export BOOST_BUILT_LIBS="/usr/include/boost_1_47_0/stage/lib"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BOOST_BUILT_LIBS}"
+
+export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:/usr/include/boost_1_47_0"
