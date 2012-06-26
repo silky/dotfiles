@@ -318,6 +318,13 @@ vmap \c <Plug>Commentary
 "   > General _______________ {{{
 
 
+" Making it so that scrolling with selections doen't screw up; we can find the
+" previous selection again with 'gv'.
+
+xnoremap <ScrollWheelUp> <esc><ScrollWheelUp>
+xnoremap <ScrollWheelDown> <esc><ScrollWheelDown>
+
+
 " r for repeat
 noremap r .
 
@@ -331,7 +338,9 @@ noremap ` <C-^>
 " Faster way to get into command mode.
 noremap ; :
 
-nnoremap <Space> za
+
+nnoremap <Space> :w<cr>
+
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
