@@ -361,6 +361,8 @@ noremap <Down> <nop>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+
+cmap w <esc>
 "   }}}
 "   > Leaders _______________ {{{
 
@@ -385,8 +387,8 @@ noremap <Tab>k <C-w>k
 noremap <Tab>l <C-w>l
 noremap <Tab><Tab> <C-w>p
 
-" Clear highlights from search
-noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+" Clear highlights from search, also sets the last search to be empty.
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>:let @/ = ""<cr>
 
 " Compile and run LaTeX file in one step
 map <leader>lp ,ll<CR>,lv<CR>

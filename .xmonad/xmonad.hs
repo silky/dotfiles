@@ -92,6 +92,7 @@ myMouseMod = 0
 myMouseBindings x = M.fromList $
     [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS))
     , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS)) 
+    -- , ((myMouseMod, 9), (\w -> toggleWS))
     ]
 
 
