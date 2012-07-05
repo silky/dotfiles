@@ -339,6 +339,8 @@ noremap ` <C-^>
 noremap ; :
 
 
+" Shortcuts for saving
+nnoremap <S-Space> :wa<cr>
 nnoremap <Space> :w<cr>
 
 
@@ -361,8 +363,6 @@ noremap <Down> <nop>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-cmap w <esc>
 "   }}}
 "   > Leaders _______________ {{{
 
@@ -388,7 +388,7 @@ noremap <Tab>l <C-w>l
 noremap <Tab><Tab> <C-w>p
 
 " Clear highlights from search, also sets the last search to be empty.
-noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>:let @/ = ""<cr>
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " Compile and run LaTeX file in one step
 map <leader>lp ,ll<CR>,lv<CR>

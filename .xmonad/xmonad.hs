@@ -42,8 +42,8 @@ import qualified Data.Map        as M
 --  selection through windows-<letter>, where the letter indicates
 --  specific layout
 
-myLayout = named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
-    ||| noBorders Full
+myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
+    ||| Full
     --
     -- I don't care about Spiral at the momemnt, but maybe at some point ...
     -- ||| named "C:Spiral" (spiral (3/4))
@@ -80,6 +80,7 @@ myKeys   = [
 
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
+   , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
 
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
