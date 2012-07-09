@@ -174,6 +174,8 @@ augroup END
 augroup ft_pandoc
     au!
 
+    " Convert current file to pdf.
+    au FileType pandoc noremap <buffer> <leader>ll :!pandoc -o %.pdf %<cr>
     au FileType pandoc setlocal nocindent
     au FileType pandoc setlocal formatoptions=tcqron1
 augroup END
@@ -258,7 +260,7 @@ let g:EasyMotion_leader_key = '.'
 "   }}}
 "   > Gundo _________________ {{{
 
-noremap <leader>gu :GundoToggle<CR>
+noremap <F5> :GundoToggle<cr>
 let g:gundo_preview_bottom = 1
 
 "   }}}
