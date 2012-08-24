@@ -43,7 +43,7 @@ import qualified Data.Map        as M
 --  specific layout
 
 myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
-    ||| Full
+    ||| noBorders Full
     --
     -- I don't care about Spiral at the momemnt, but maybe at some point ...
     -- ||| named "C:Spiral" (spiral (3/4))
