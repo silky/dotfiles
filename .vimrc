@@ -315,6 +315,9 @@ nmap \c <Plug>CommentaryLine
 vmap \c <Plug>Commentary
 
 "   }}}
+"   > Pep8 __________________ {{{
+let g:pep8_map = '<F8>'
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
