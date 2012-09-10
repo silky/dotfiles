@@ -60,6 +60,7 @@ set notimeout
 set nottimeout
 set autowrite
 set foldlevelstart=1
+set formatprg=fmt\ -w78
 
 " cscope
 "set cscopetagorder=1
