@@ -81,6 +81,7 @@ myKeys   = [
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
+   , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
 
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
