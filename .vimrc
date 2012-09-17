@@ -375,7 +375,11 @@ noremap <Right> <NOP>
 let mapleader=','
 let maplocalleader='\\' 
 
-map <leader>tl <Plug>VimwikiToggleListItem
+" Finds tags, using 'AcK'. Defined below in the command section; will auto-complete
+" to tags.
+nmap <leader>t :FindAllTags 
+
+" map <leader>tl <Plug>VimwikiToggleListItem
 map <leader>rw <Plug>VimwikiIndex
 
 " Close quickfix and preview windows, if open
@@ -432,6 +436,10 @@ endfunction
 
 " }}}
 " Commands -------------------------------------------------------------------- {{{
+
+
+
+command! -nargs=1 -complete=tag FindAllTags :Ack '<args>'
 
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
