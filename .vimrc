@@ -176,7 +176,7 @@ augroup ft_pandoc
     au!
 
     " Convert current file to pdf.
-    au FileType pandoc noremap <buffer> <leader>ll :!pandoc -o "%.pdf" "%"<cr>
+    au FileType pandoc noremap <buffer> <leader>ll :!pandoc -o "%.pdf" --template=a.latex "%"<cr>
     au FileType pandoc setlocal nocindent
     au FileType pandoc setlocal formatoptions=tcqron1
 augroup END
