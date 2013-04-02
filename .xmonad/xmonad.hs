@@ -15,6 +15,7 @@ import System.IO
 import XMonad hiding ( (|||) )
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeWindows
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
@@ -81,6 +82,7 @@ myKeys   = [
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
+   , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
 
    -- Used to copy say VLC to other screens to watch movies

@@ -28,9 +28,15 @@
 [submodule ".vim/bundle/tabman"]
 	path = .vim/bundle/tabman
 	url = git://github.com/kien/tabman.vim.git
-[submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
-	url = git://github.com/silky/Command-T.git
 [submodule ".vim/bundle/mathematic.vim"]
 	path = .vim/bundle/mathematic.vim
 	url = git://github.com/Rykka/mathematic.vim.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://github.com/wincent/Command-T.git
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
+[submodule ".vim/bundle/LaTeX-Box"]
+	path = .vim/bundle/LaTeX-Box
+	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
