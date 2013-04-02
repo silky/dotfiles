@@ -231,11 +231,15 @@ augroup END
 augroup ft_tex
     au!
 
+    au FileType tex let maplocalleader=',' 
     au BufRead,BufNewFile *.tex 	set filetype=tex
 augroup END
 "   }}}
 " }}}
 " Plugin configuration -------------------------------------------------------- {{{
+"   > LaTeX-Box _____________ {{{
+let g:LatexBox_latexmk_options = "-pvc -pdfps"
+"   }}}
 "   > LaTeX-suite ___________ {{{
 let g:Tex_DefaultTargetFormat = 'pdf'
 
