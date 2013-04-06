@@ -77,8 +77,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
-set textwidth=85
-set formatoptions=qrnc
+set textwidth=78
+set formatoptions=qrjtco
 
 " 	}}}
 
@@ -233,6 +233,7 @@ augroup ft_tex
 
     au FileType tex let maplocalleader=',' 
     au BufRead,BufNewFile *.tex 	set filetype=tex
+    au FileType tex setlocal formatoptions=qrjtco
 augroup END
 "   }}}
 " }}}
