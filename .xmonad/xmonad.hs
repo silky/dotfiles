@@ -85,6 +85,12 @@ myKeys   = [
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
 
+   -- Lamest thing to ever exist!
+   , ((mod4Mask, xK_1), windows $ W.greedyView "6")
+   , ((mod4Mask, xK_2), windows $ W.greedyView "7")
+   , ((mod4Mask, xK_3), windows $ W.greedyView "8")
+   , ((mod4Mask, xK_4), windows $ W.greedyView "9")
+
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
    , ((layoutChangeModMask, xK_d), killAllOtherCopies)
