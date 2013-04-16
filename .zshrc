@@ -11,6 +11,7 @@ ZSH_THEME="noon"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gg="sudo apt-get install"
+alias df="df -h"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"

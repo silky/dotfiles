@@ -84,12 +84,13 @@ myKeys   = [
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
+   , ((mod1Mask, xK_m), spawn "sh -c alsamixer")
 
    -- Lamest thing to ever exist!
-   , ((mod4Mask, xK_1), windows $ W.greedyView "6")
-   , ((mod4Mask, xK_2), windows $ W.greedyView "7")
-   , ((mod4Mask, xK_3), windows $ W.greedyView "8")
-   , ((mod4Mask, xK_4), windows $ W.greedyView "9")
+   , ((mod4Mask, xK_1), windows $ W.greedyView "5")
+   , ((mod4Mask, xK_2), windows $ W.greedyView "6")
+   , ((mod4Mask, xK_3), windows $ W.greedyView "7")
+   , ((mod4Mask, xK_4), windows $ W.greedyView "8")
 
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
@@ -130,7 +131,7 @@ main = xmonad $ ewmh defaultConfig {
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
-    , ("M-0", spawn "notify-send \"`date '+%I:%M %p %A, %b %d %Y'`\"")
+    , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\`\", \"\\`tl\\``\"")
       -- Consider changing these to "Tab+", but it must be that it
       -- doesn't interrupt anything else.
       --

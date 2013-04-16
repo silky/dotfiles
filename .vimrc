@@ -31,7 +31,7 @@ set guifont=Akkurat-Mono\ 10
 set shortmess=at  " Ensure we don't get hit-enter prompts
 set grepprg=grep\ -nH\ $*
 set t_Co=256
-set wildignore+=*.pyc,*.pdf,.git,.svn,*.png,*.jpg
+set wildignore+=*.pyc,*.pdf,.git,.svn,*.png,*.jpg,*.ps,*.log,*.aux,*.out,*.dvi,*.fdb_latexmk
 set winheight=30  " Autosize window to this height.
 
 set encoding=utf-8
@@ -234,15 +234,24 @@ augroup ft_tex
 
     au BufRead,BufNewFile *.tex 	set filetype=tex
     au FileType tex setlocal formatoptions=qrjtco
+
+    " Set some common mappins I care about here; these are actually LaTeX-box
+    " specific.
+
+    " These seem slow maybe related to latexbox slowness in general.
+    " au FileType tex imap <buffer> [[  \begin{
+    " au FileType tex imap <buffer> [a  \begin{align*}
+    " au FileType tex imap <buffer> ]]  <Plug>LatexCloseCurEnv
 augroup END
 "   }}}
 " }}}
 " Plugin configuration -------------------------------------------------------- {{{
 "   > LaTeX-Box _____________ {{{
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
-let g:LatexBox_Folding = 1
-let g:LatexBox_fold_preamble = 1
-let g:LatexBox_fold_envs = 1
+" Folding is incredibly slow in latexbox, so we don't use it.
+let g:LatexBox_Folding = 0
+let g:LatexBox_fold_preamble = 0
+let g:LatexBox_fold_envs = 0
 "   }}}
 "   > Command-T _____________ {{{
 let g:CommandTMaxHeight = 20
