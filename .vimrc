@@ -247,7 +247,7 @@ augroup END
 " }}}
 " Plugin configuration -------------------------------------------------------- {{{
 "   > LaTeX-Box _____________ {{{
-let g:LatexBox_latexmk_options = "-pvc -pdfps"
+let g:LatexBox_latexmk_options = "-pvc -pdf"
 " Folding is incredibly slow in latexbox, so we don't use it.
 let g:LatexBox_Folding = 0
 let g:LatexBox_fold_preamble = 0
