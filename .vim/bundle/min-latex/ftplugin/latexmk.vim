@@ -248,9 +248,9 @@ function! LatexBox_LatexErrors(status, ...)
 	if fnamemodify(getcwd(), ":p") !=# fnamemodify(LatexBox_GetTexRoot(), ":p")
 		redraw
 		echohl WarningMsg
-		echomsg 'Changing directory to TeX root: ' . LatexBox_GetTexRoot() . ' to support error log parsing'
+		" echomsg 'Changing directory to TeX root: ' . LatexBox_GetTexRoot() . ' to support error log parsing'
 		echohl None
-		execute 'cd ' . LatexBox_GetTexRoot()
+		execute 'cd "' . LatexBox_GetTexRoot() . '"'
 	endif
 
 	if g:LatexBox_autojump
