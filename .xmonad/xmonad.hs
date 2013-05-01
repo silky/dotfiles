@@ -84,7 +84,7 @@ myKeys   = [
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
-   , ((mod1Mask, xK_m), spawn "sh -c alsamixer")
+   , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
 
    -- Lamest thing to ever exist!
    , ((mod4Mask, xK_1), windows $ W.greedyView "5")

@@ -15,6 +15,7 @@ if !exists('b:LatexBox_loaded')
 	let prefix = expand('<sfile>:p:h') . '/'
 
 	execute 'source ' . s:FNameEscape(prefix . 'common.vim')
+	execute 'source ' . s:FNameEscape(prefix . 'findmain.vim')
 	execute 'source ' . s:FNameEscape(prefix . 'latexmk.vim')
 	execute 'source ' . s:FNameEscape(prefix . 'mappings.vim')
 
