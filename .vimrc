@@ -31,7 +31,9 @@ set guifont=Akkurat-Mono\ 10
 set shortmess=at  " Ensure we don't get hit-enter prompts
 set grepprg=grep\ -nH\ $*
 set t_Co=256
-set wildignore+=*.pyc,*.pdf,.git,.svn,*.png,*.jpg,*.ps,*.log,*.aux,*.out,*.dvi,*.fdb_latexmk
+set wildignore+=*.pyc,*.pdf,.git,.svn,*.png,*.jpg,*.ps,*.log,*.aux,*.out,*.dvi,*.fdb_latexmk,*.pyo
+set wildignore+=*.lib,*.exe,*.dll,*.pdb,*.exp
+set wildignore+=*.dat,*.id,*.map,*.DAT,*.ID,*.MAP,*.tab,*.TAB,*.mid,*.mif,*.MID,*.MIF
 set winheight=30  " Autosize window to this height.
 
 set encoding=utf-8
@@ -61,7 +63,7 @@ set notimeout
 set nottimeout
 set autowrite
 set foldlevelstart=1
-set formatprg=fmt\ -w78
+" set formatprg=fmt\ -w78
 
 " cscope
 "set cscopetagorder=1
@@ -239,6 +241,8 @@ augroup ft_tex
     " specific.
 
     " These seem slow maybe related to latexbox slowness in general.
+    au FileType tex imap <buffer> [ba \begin{align*}
+    au FileType tex imap <buffer> [ea \end{align*}
     " au FileType tex imap <buffer> [[  \begin{
     " au FileType tex imap <buffer> [a  \begin{align*}
     " au FileType tex imap <buffer> ]]  <Plug>LatexCloseCurEnv
@@ -451,7 +455,7 @@ command! -nargs=1 -complete=tag FindAllTags :Ack '<args>'
 
 " Find Todo's: Run's my todo util (http://github.com/silky/utils/find-todo) over
 " some source dir, and posts the results in the quickfix window.
-command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/silky-github/utils/find-todo/find-todo <args> concise') | copen
+command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/utils/find-todo/find-todo <args> concise') | copen
 
 " Run a tag search and then focus the screen.
 command! -nargs=1 -complete=tag MyTag :tag <args> | :normal zz

@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs...
-export PATH=/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/bin
+export PATH=/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/bin:/home/noon/.cabal/bin
 
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"

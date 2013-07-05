@@ -169,3 +169,6 @@ export PATH
 
 # eval 'ssh-agent'
 shopt -s globstar
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

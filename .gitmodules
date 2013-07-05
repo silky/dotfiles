@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/LaTeX-Box"]
 	path = .vim/bundle/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
+[submodule ".vim/bundle/accelerated_smooth_scroll"]
+	path = .vim/bundle/accelerated_smooth_scroll
+	url = git@github.com:vim-scripts/accelerated-smooth-scroll.git
