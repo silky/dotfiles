@@ -7,12 +7,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="noon"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias gg="sudo apt-get install"
-alias df="df -h"
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -48,4 +42,10 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BOOST_BUILT_LIBS}"
 
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:/usr/include/boost_1_47_0"
 
+alias gg="sudo apt-get install"
+alias df="df -h"
+# heman foo runs man foo || foo -- help
+alias man='heman.sh'
 alias sel='noglob sel'
+alias l='ls -lFh'
+alias ll='ls --color=tty'
