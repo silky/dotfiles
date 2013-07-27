@@ -342,9 +342,14 @@ let g:pep8_map = '<F8>'
 xnoremap <ScrollWheelUp> <esc><ScrollWheelUp>
 xnoremap <ScrollWheelDown> <esc><ScrollWheelDown>
 
+" Diable man lookup
+nnoremap K <nop>
+vnoremap K <nop>
+
+vnoremap r "_dP
 
 " r for repeat
-noremap r .
+nnoremap r .
 
 " ConqueTerm
 "noremap rr :ConqueTerm python<CR>
