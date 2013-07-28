@@ -1,0 +1,20 @@
+[color]
+    ui = auto
+    branch = always
+    diff = always
+    interative = always
+    status = always
+
+[user]
+    name = Noon Silk
+    email = noonsilk@gmail.com
+
+[giggle]
+    main-window-maximized = false
+    main-window-geometry = 732x538+1186+0
+    history-view-vpane-position = 338
+    file-view-vpane-position = 411
+    main-window-view = FileView
+
+[alias]
+    hist = log --oneline --graph --decorate

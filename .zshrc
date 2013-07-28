@@ -48,4 +48,4 @@ alias df="df -h"
 alias man='heman.sh'
 alias sel='noglob sel'
 alias l='ls -lFh'
-alias ll='ls --color=tty'
+alias ll='ls -lFhA'
