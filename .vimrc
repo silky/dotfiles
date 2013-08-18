@@ -307,8 +307,8 @@ augroup ft_vimwiki
     au!
 
     " Remap next/prev as my tab key does other things.
-    au Filetype vimwiki nmap <buffer> l <Plug>VimwikiNextLink
-    au Filetype vimwiki nmap <buffer> L <Plug>VimwikiPrevLink
+    " au Filetype vimwiki nmap <buffer> l <Plug>VimwikiNextLink
+    " au Filetype vimwiki nmap <buffer> L <Plug>VimwikiPrevLink
 augroup END
 "   }}}
 "   > PyFlakes ______________ {{{
