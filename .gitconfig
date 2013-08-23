@@ -18,3 +18,5 @@
 
 [alias]
     hist = log --oneline --graph --decorate
+[push]
+	default = matching
