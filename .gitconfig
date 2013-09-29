@@ -18,5 +18,10 @@
 
 [alias]
     hist = log --oneline --graph --decorate
+	d = difftool
 [push]
 	default = matching
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
