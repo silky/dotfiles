@@ -1,8 +1,11 @@
 Xcursor.theme:    Vanilla-DMZ-AA
 
+URxvt.depth: 32
 !urxvt color scheme:
 
-URxvt*background: #121212
+
+URxvt*background: rgba:0000/0000/0000/cccc
+! URxvt*background: #121212
 URxvt*foreground: #1bb500
 
 URxvt*colorUL: #86a2b0

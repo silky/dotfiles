@@ -88,6 +88,7 @@ set formatoptions=qrjtco
 " }}}
 " Backups --------------------------------------------------------------------- {{{
 
+set noswapfile
 set undodir=~/.tmp/vim/undo/      " undo files
 set backupdir=~/.tmp/vim/backup/  " backups
 set directory=~/.tmp/vim/swap/    " swap files
@@ -193,7 +194,8 @@ augroup ft_python
     au Filetype python noremap  <buffer> <localleader>dd :RopeDefinition<CR>
 
     au FileType python setlocal omnifunc=pythoncomplete#Complete
-    au Filetype python setlocal foldmethod=marker
+    au Filetype python setlocal foldmethod=indent
+    au Filetype python setlocal foldnestmax=2
 augroup END
 "   }}}
 "   > QuickFix ______________ {{{
