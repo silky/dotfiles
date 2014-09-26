@@ -10,15 +10,16 @@
     email = noonsilk@gmail.com
 
 [giggle]
-    main-window-maximized = false
-    main-window-geometry = 732x538+1186+0
-    history-view-vpane-position = 338
-    file-view-vpane-position = 411
-    main-window-view = FileView
+	main-window-maximized = false
+	main-window-geometry = 809x358+1109+0
+	history-view-vpane-position = 37
+	file-view-vpane-position = 44
+	main-window-view = HistoryView
 
 [alias]
     hist = log --oneline --graph --decorate
 	d = difftool
+	edit = !$EDITOR \"$(git ls-files | tmenu)\"
 [push]
 	default = matching
 [diff]

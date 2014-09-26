@@ -4,7 +4,6 @@
 " Based on "Pablo" by Ron Aaron <ron@ronware.org>
 "
 " Modified By:  Noon Silk <noonsilk@gmail.com>
-" Last Change:	2011 Oct 19
 
 hi clear
 set background=dark
@@ -24,6 +23,7 @@ highlight Error					ctermbg=9							guibg=#ff0000
 highlight Todo		 ctermfg=4	ctermbg=3			  guifg=#000080 guibg=#c0c000
 highlight Directory  ctermfg=2						  guifg=#00c000
 highlight MatchParen guibg=black
+highlight Conceal    guibg=#202020 guifg=#de355f
 
 "highlight StatusLine ctermfg=11 ctermbg=12 cterm=none guifg=#ffff00 guibg=#e01b4c gui=none
 highlight StatusLine                                  guibg=#0e0e0e guifg=#e01b4c gui=none
@@ -36,11 +36,13 @@ highlight Search				ctermbg=3							guibg=#c0c000
 highlight Visual guifg=White guibg=#c000bd
 highlight Folded ctermfg=216 guibg=#252525 guifg=#de355f
 
+" This shows up in the pandoc markdown thing; disabling as it is annoying.
+highlight FoldColumn guifg=#202020 guibg=#202020
+
 " Todo: Fix this.
 highlight Pmenu guifg=#e1e1e1 guibg=black
 highlight PmenuSel guifg=black guibg=#e01b4c
 
-highlight FoldColumn guibg=black guifg=#eaeaea
 highlight MyTagListFileName guifg=#e01b4c
 
 " Highlighting for LaTeX. The various options can be found in
