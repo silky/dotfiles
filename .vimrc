@@ -28,6 +28,7 @@ set guifont=Akkurat-Mono\ 10
 " }}}
 " General Options ------------------------------------------------------------- {{{
 
+set mouse=a
 set shortmess=at  " Ensure we don't get hit-enter prompts
 set grepprg=grep\ -nH\ $*
 set t_Co=256
@@ -54,7 +55,7 @@ set history=10000
 set undofile
 set undoreload=10000
 set nolist
-set shell=/bin/bash
+set shell=/bin/zsh
 set autoread
 set display=uhex
 set nofsync
@@ -62,7 +63,7 @@ set shiftround
 set notimeout
 set nottimeout
 set autowrite
-set foldlevelstart=1
+set foldlevelstart=99
 " set formatprg=fmt\ -w78
 
 " cscope
@@ -145,8 +146,6 @@ set virtualedit+=block
 
 " }}}
 " Folding --------------------------------------------------------------------- {{{
-
-set foldlevelstart=99 " All folds open
 
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
@@ -290,13 +289,6 @@ let g:SuperTabLongestHighlight = 1
 "map <unique> <leader>tl <Plug>TaskList
 
 "   }}}
-"   > ConqueTerm ____________ {{{
-
-" Bugfix for ConqueTerm, doesn't check for this variable being
-" defined.
-let g:ConqueTerm_SessionSupport = 0
-
-"   }}}
 "   > VimWiki _______________ {{{
 
 " Configure my wikis
@@ -318,11 +310,6 @@ augroup END
 let g:pyflakes_use_quickfix = 0
 
 "   }}}
-"   > InlineEdit ____________ {{{
-
-noremap <silent> <leader>e :InlineEdit<cr>
-
-"   }}}
 "   > Commentary ____________ {{{
 
 " unmap \\\
@@ -333,6 +320,19 @@ vmap \c <Plug>Commentary
 "   > Pep8 __________________ {{{
 let g:pep8_map = '<F8>'
 "   }}}
+"   > Vimux _________________ {{{
+function! VimuxSendToGhci()
+    call VimuxSendText(":{\n")
+    call VimuxSlime()
+    call VimuxSendText(":}\n")
+endfunction
+
+function! VimuxSlime()
+    call VimuxSendText(@v)
+    call VimuxSendKeys("Enter")
+endfunction
+
+"   }}}
 " }}}
 " Remappings ------------------------------------------------------------------ {{{
 "   > General _______________ {{{
@@ -341,8 +341,8 @@ let g:pep8_map = '<F8>'
 " Making it so that scrolling with selections doen't screw up; we can find the
 " previous selection again with 'gv'.
 
-xnoremap <ScrollWheelUp> <esc><ScrollWheelUp>
-xnoremap <ScrollWheelDown> <esc><ScrollWheelDown>
+" xnoremap <ScrollWheelUp> <esc><ScrollWheelUp>
+" xnoremap <ScrollWheelDown> <esc><ScrollWheelDown>
 
 " Diable man lookup
 nnoremap K <nop>
@@ -352,10 +352,6 @@ vnoremap r "_dP
 
 " r for repeat
 nnoremap r .
-
-" ConqueTerm
-"noremap rr :ConqueTerm python<CR>
-"noremap rbr :ConqueTerm bpython<CR>
 
 noremap ' `
 noremap ` <C-^>
@@ -379,14 +375,14 @@ noremap <Home> <Esc>^
 noremap gf :MyTag 
 
 " Navigation keys
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+inoremap <Up>    <nop>
+inoremap <Down>  <nop>
+inoremap <Left>  <nop>
+inoremap <Right> <nop>
+noremap <Up>     <nop>
+noremap <Down>   <nop>
+noremap <Left>   <nop>
+noremap <Right>  <nop>
 
 "   }}}
 "   > Leaders _______________ {{{
@@ -405,6 +401,16 @@ map <leader>rw <Plug>VimwikiIndex
 map <silent> <leader>cw :ccl \| pc<cr>
 
 map <silent> <leader>u :call HandleURL()<CR>
+
+
+" vimtmux thingss
+vmap <silent> <leader>hh "vy :call VimuxSendToGhci()<cr>
+nmap <silent> <leader>ghc :call VimuxRunCommand("ghci-colour")<cr>
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <silent> <leader>vs "vy :call VimuxSlime()<cr>
+
+" Select current paragraph and send it to tmux
+nmap <silent> <leader>vs vip<LocalLeader>vs<cr>
 
 " Paste from general clipboard.
 noremap <leader>p "+p

@@ -33,7 +33,7 @@ highlight VertSplit                                   guibg=black guifg=black
 " For Seb, I've set the background to off-black.
 highlight Normal									  guifg=#e1e1e1 guibg=#202020
 highlight Search				ctermbg=3							guibg=#c0c000
-highlight Visual guifg=White guibg=#c000bd
+highlight Visual guifg=White guibg=#c000bd ctermbg=12
 highlight Folded ctermfg=216 guibg=#252525 guifg=#de355f
 
 " This shows up in the pandoc markdown thing; disabling as it is annoying.

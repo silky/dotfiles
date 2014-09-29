@@ -55,3 +55,12 @@
 [submodule ".vim/bundle/vim-pandoc-syntax"]
 	path = .vim/bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax
+[submodule ".vim/bundle/vim-hoogle"]
+	path = .vim/bundle/vim-hoogle
+	url = https://github.com/Twinside/vim-hoogle
+[submodule ".vim/bundle/vimtux"]
+	path = .vim/bundle/vimtux
+	url = https://github.com/vim-scripts/vimtux
+[submodule ".vim/bundle/vimux"]
+	path = .vim/bundle/vimux
+	url = https://github.com/benmills/vimux
