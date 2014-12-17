@@ -23,7 +23,7 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 10
+set guifont=Akkurat-Mono\ 9
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -209,9 +209,7 @@ augroup ft_vim
 
     au FileType vim setlocal foldmethod=marker
     au FileType help setlocal textwidth=78
-    au FileType vim setlocal foldlevel=0
 
-    " TODO: Confirm what this does.
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 "   }}}
@@ -407,7 +405,7 @@ map <silent> <leader>u :call HandleURL()<CR>
 vmap <silent> <leader>hh "vy :call VimuxSendToGhci()<cr>
 nmap <silent> <leader>ghc :call VimuxRunCommand("ghci-colour")<cr>
 " If text is selected, save it in the v buffer and send that buffer it to tmux
-vmap <silent> <leader>vs "vy :call VimuxSlime()<cr>
+vmap <leader>vs "vy :call VimuxSlime()<cr>
 
 " Select current paragraph and send it to tmux
 nmap <silent> <leader>vs vip<LocalLeader>vs<cr>
@@ -473,7 +471,7 @@ command! -nargs=1 -complete=file Gtt cgetexpr system('~/dev/utils/find-todo/find
 " Run a tag search and then focus the screen.
 command! -nargs=1 -complete=tag MyTag :tag <args> | :normal zz
 
-command! PyTags :DoTags *.py
+command! PyTags :DoTags **/*.py
 
 " Generate a tags file and refresh CommandT; must pass the extensions you want.
 command! -nargs=1 DoTags :call system("ctags -R <args> tags") | :CommandTFlush

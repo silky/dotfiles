@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs...
-export PATH=/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/dev/ext/quipper/quipper-0.4/quipper/scripts:/usr/lib/mono/4.0/
+export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/dev/ext/quipper/quipper-0.4/quipper/scripts:/usr/lib/mono/4.0/:/home/noon/node_modules/.bin
 
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
@@ -59,8 +59,7 @@ alias cal='task cal'
 alias ca='c && cal'
 alias shake='runhaskell Shakefile'
 alias today='conscript sh -c "clear && task due:today"'
-
-
+alias gitjk="history 10 | tac | gitjk_cmd"
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
@@ -68,4 +67,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.cabal/bin #
+
+# added by travis gem
+[ -f /home/noon/.travis/travis.sh ] && source /home/noon/.travis/travis.sh

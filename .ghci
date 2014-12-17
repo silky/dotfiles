@@ -1,3 +1,4 @@
 :set prompt "\ESC[34mϟ> \ESC[m"
 :set -XOverloadedStrings
 :set +t
+:set stop :list

@@ -174,3 +174,6 @@ shopt -s globstar
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /home/noon/.travis/travis.sh ] && source /home/noon/.travis/travis.sh
