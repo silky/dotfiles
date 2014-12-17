@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/tasklist"]
 	path = .vim/bundle/tasklist
 	url = git://github.com/vim-scripts/TaskList.vim.git
-[submodule ".vim/bundle/ropevim"]
-	path = .vim/bundle/ropevim
-	url = git://github.com/sontek/rope-vim.git
 [submodule ".vim/bundle/commentary"]
 	path = .vim/bundle/commentary
 	url = git://github.com/tpope/vim-commentary.git
