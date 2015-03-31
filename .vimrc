@@ -23,7 +23,8 @@ colorscheme noon
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " If you have it, this is somewhat preferable, otherwise use the above.
-set guifont=Akkurat-Mono\ 9
+" set guifont=Akkurat-Mono\ 10
+set guifont=Droid\ Sans\ Mono\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{

@@ -36,7 +36,7 @@ export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/fi
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib:/usr/local/lib"
-
+export EXT_LLVM_DIR=/home/noon/tools/llvm/build
 export BOOST_BUILT_LIBS="/usr/include/boost_1_47_0/stage/lib"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BOOST_BUILT_LIBS}"
 
@@ -70,3 +70,8 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # added by travis gem
 [ -f /home/noon/.travis/travis.sh ] && source /home/noon/.travis/travis.sh
+
+
+export PATH=/home/noon/torch/install/bin:$PATH  # Added automatically by torch-dist
+export LD_LIBRARY_PATH=/home/noon/torch/install/lib:$LD_LIBRARY_PATH  # Added automatically by torch-dist
+export DYLD_LIBRARY_PATH=/home/noon/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
