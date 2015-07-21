@@ -67,7 +67,7 @@ myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror til
 -- toggle, but at least it's possible to change to specific
 -- layouts.
 
-layoutChangeModMask = mod1Mask .|. shiftMask
+layoutChangeModMask = mod4Mask .|. shiftMask
 
 myKeys   = [
      ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
@@ -83,15 +83,8 @@ myKeys   = [
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
-   , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
-   , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
-
-   -- Lamest thing to ever exist!
-   , ((mod4Mask, xK_1), windows $ W.greedyView "5")
-   , ((mod4Mask, xK_2), windows $ W.greedyView "6")
-   , ((mod4Mask, xK_3), windows $ W.greedyView "7")
-   , ((mod4Mask, xK_4), windows $ W.greedyView "8")
-
+   , ((mod4Mask, xK_o), spawn "nautilus --no-desktop")
+   , ((mod4Mask, xK_m), spawn "konsole -e alsamixer")
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
    , ((layoutChangeModMask, xK_d), killAllOtherCopies)
@@ -116,6 +109,7 @@ main = xmonad $ ewmh defaultConfig {
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
     , mouseBindings        = myMouseBindings
+    , modMask              = mod4Mask
 
     -- Update pointer to be in the center on focus; I tried
     -- it being the 'Nearest' option, but this was not good
@@ -134,8 +128,4 @@ main = xmonad $ ewmh defaultConfig {
     , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\`\", \"\\`tl\\``\"")
       -- Consider changing these to "Tab+", but it must be that it
       -- doesn't interrupt anything else.
-      --
-      -- Some default "goto" operations.
-    , ("M-f", runOrRaise "firefox" (className =? "Firefox"))
-    , ("M-v", runOrRaise "gvim"    (className =? "Gvim"))
     ]
