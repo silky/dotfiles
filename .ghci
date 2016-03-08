@@ -1,4 +1,35 @@
 :set prompt "\ESC[34mϟ> \ESC[m"
-:set -XOverloadedStrings
 :set +t
 :set stop :list
+
+-- Hoogle search showing all matches
+:def hoogle \x -> return $ ":! hoogle --color --count=15 \"" ++ x ++ "\""
+:def doc    \s -> return $ ":! hoogle --info \"" ++ s ++ "\""
+:def hlint  \s -> return $ ":! hlint \"" ++ s ++ "\""
+--
+-- vim:set filetype=haskell:
+
+
+
+-- :stdout <var> <cmd>    Execute <cmd>, redirecting stdout to <var>
+--     Named thus to avoid conflict with :r for :reload, etc.
+:{
+:def stdout \varcmd ->
+        case break Data.Char.isSpace varcmd of
+        { (var, _:cmd) ->
+            return $ unlines
+                [ ":set -fno-print-bind-result"
+                , "tmp   <- System.Directory.getTemporaryDirectory"
+                , "(f,h) <- System.IO.openTempFile tmp \"ghci\""
+                , "sto   <- GHC.Handle.hDuplicate System.IO.stdout"
+                , "GHC.Handle.hDuplicateTo h System.IO.stdout"
+                , "System.IO.hClose h"
+                , cmd
+                , "GHC.Handle.hDuplicateTo sto System.IO.stdout"
+                , "let readFileNow f = readFile f >>= \\t -> Data.List.length t `seq` return t"
+                , var ++ " <- readFileNow f"
+                , "System.Directory.removeFile f"
+                ]
+        ; _ -> return "putStrLn \"usage: :stdout <var> <cmd>\""
+        }
+:}

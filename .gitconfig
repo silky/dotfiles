@@ -6,8 +6,8 @@
     status = always
 
 [user]
-    name = Noon Silk
-    email = noonsilk@gmail.com
+    name = silky
+    email = noonsilk+github@gmail.com
 
 [giggle]
 	main-window-maximized = false
@@ -31,3 +31,5 @@
 	submodulesummary = 1
 [credential]
 	helper = gnome-keyring
+[core]
+	editor = /usr/bin/vim

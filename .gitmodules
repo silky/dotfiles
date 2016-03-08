@@ -64,3 +64,18 @@
 [submodule ".vim/bundle/fsharp"]
 	path = .vim/bundle/fsharp
 	url = https://github.com/kongo2002/fsharp-vim.git
+[submodule ".vim/bundle/vim-cloure-static"]
+	path = .vim/bundle/vim-cloure-static
+	url = git@github.com:guns/vim-clojure-static.git
+[submodule ".vim/bundle/vim-fireplace"]
+	path = .vim/bundle/vim-fireplace
+	url = git@github.com:tpope/vim-fireplace.git
+[submodule ".vim/bundle/vim-classpath"]
+	path = .vim/bundle/vim-classpath
+	url = git@github.com:tpope/vim-classpath.git
+[submodule ".vim/bundle/Dockerfile"]
+	path = .vim/bundle/Dockerfile
+	url = https://github.com/ekalinin/Dockerfile.vim.git
+[submodule ".vim/bundle/vim-syntax-shakespeare"]
+	path = .vim/bundle/vim-syntax-shakespeare
+	url = git@github.com:pbrisbin/vim-syntax-shakespeare.git

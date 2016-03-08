@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs...
-export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/dev/ext/quipper/quipper-0.4/quipper/scripts:/usr/lib/mono/4.0/:/home/noon/node_modules/.bin
+export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/dev/ext/quipper/quipper-0.4/quipper/scripts:/usr/lib/mono/4.0/:/home/noon/node_modules/.bin:/home/noon/.rvm/bin:/home/noon/tools/MiniZinc:/home/noon/tools/swift-2.2/usr/bin/:$PATH
 
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
@@ -42,8 +42,12 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BOOST_BUILT_LIBS}"
 
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:/usr/include/boost_1_47_0"
 
+# 'repl' loads up ghci (which is actually 'ghci-color')
+alias repl='cabal repl --with-ghc=ghci'
 alias gg="sudo apt-get install"
 alias df="df -h"
+alias agp="ag -G '.py$'"
+alias agh="ag -G '.hs$'"
 # heman foo runs man foo || foo -- help
 alias man='heman.sh'
 alias sel='noglob sel'
@@ -65,13 +69,18 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 source /usr/local/bin/virtualenvwrapper.sh
 
+source /usr/local/share/chruby/chruby.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # added by travis gem
 [ -f /home/noon/.travis/travis.sh ] && source /home/noon/.travis/travis.sh
 
 
-export PATH=/home/noon/torch/install/bin:$PATH  # Added automatically by torch-dist
-export LD_LIBRARY_PATH=/home/noon/torch/install/lib:$LD_LIBRARY_PATH  # Added automatically by torch-dist
-export DYLD_LIBRARY_PATH=/home/noon/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
+export PATH=./.cabal-sandbox/bin:/home/noon/torch/install/bin:/usr/racket/bin:/usr/local/cuda-7.0/bin:/home/noon/.local/bin:/opt/ghc/7.10.3/bin:$PATH
+export LD_LIBRARY_PATH=/home/noon/torch/install/lib:/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=/home/noon/torch/install/lib:$DYLD_LIBRARY_PATH
+
+export CUDA_HOME=/usr/local/cuda
+
+export NVM_DIR="/home/noon/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

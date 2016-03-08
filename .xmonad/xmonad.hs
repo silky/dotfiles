@@ -16,11 +16,14 @@ import XMonad hiding ( (|||) )
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.Place
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.OneBig
+import XMonad.Layout.Grid
+import XMonad.Layout.ZoomRow
 import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Named(named)
 import XMonad.Layout.ToggleLayouts
@@ -45,19 +48,20 @@ import qualified Data.Map        as M
 
 myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
     ||| noBorders Full
+    ||| named "CenteredMaster" (zoomRow)
     --
     -- I don't care about Spiral at the momemnt, but maybe at some point ...
     -- ||| named "C:Spiral" (spiral (3/4))
-    ||| named "C:Big" (OneBig (3/4) (3/4)) 
+    ||| named "C:Big" (OneBig (3/4) (3/4))
   where
      tiled   = Tall nmaster delta ratio
- 
+
      -- The default number of windows in the master pane
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
      ratio   = (2/(1 + (toRational(sqrt(5)::Double))))
- 
+
      -- Percent of screen to increment by when resizing panes
      delta   = 2/100
 
@@ -67,14 +71,14 @@ myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror til
 -- toggle, but at least it's possible to change to specific
 -- layouts.
 
-layoutChangeModMask = mod4Mask .|. shiftMask
+layoutChangeModMask = mod1Mask .|. shiftMask
 
 myKeys   = [
      ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
    , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
    , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "C:Big")
-
+   , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "CenteredMaster")
    -- The "Menu" key next to the Windows key
    -- EasyXMotion is courtesy of Loki: https://github.com/loki42/easyxmotion
    , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
@@ -83,8 +87,13 @@ myKeys   = [
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
-   , ((mod4Mask, xK_o), spawn "nautilus --no-desktop")
-   , ((mod4Mask, xK_m), spawn "konsole -e alsamixer")
+   , ((mod1Mask, xK_e), spawn "echo | dmenu -p 'google: ' | xargs -I '{}' surf https://www.google.com/search?q='{}'")
+   , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
+   , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
+   -- Okay, so this only works on floating windows.
+   -- , ((mod1Mask, xK_r), placeFocused (fixed (0,0)))
+   -- , ((mod1Mask, xK_f), withFocused float)
+   --
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
    , ((layoutChangeModMask, xK_d), killAllOtherCopies)
@@ -95,7 +104,7 @@ myKeys   = [
 myMouseMod = 0
 myMouseBindings x = M.fromList $
     [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS))
-    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS)) 
+    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS))
     -- , ((myMouseMod, 9), (\w -> toggleWS))
     ]
 
@@ -109,7 +118,7 @@ main = xmonad $ ewmh defaultConfig {
     , focusedBorderColor   = "#e01b4c"
     , layoutHook           = myLayout
     , mouseBindings        = myMouseBindings
-    , modMask              = mod4Mask
+    , modMask              = mod1Mask
 
     -- Update pointer to be in the center on focus; I tried
     -- it being the 'Nearest' option, but this was not good

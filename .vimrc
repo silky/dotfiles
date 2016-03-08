@@ -5,6 +5,255 @@
 " Author: Noon Silk <noonsilk@gmail.com>
 " Location: https://github.com/silky/dotfiles/blob/master/.vimrc
 
+
+" New ----- {{{
+" Use par for prettier line formatting
+set formatprg="PARINIT='rTbgqR B=.,?_A_a Q=_s>|' par\ -w72"
+
+" Use stylish haskell instead of par for haskell buffers
+autocmd FileType haskell let &formatprg="stylish-haskell"
+
+" Firstly define the leaders.
+let mapleader=','
+let maplocalleader=',' 
+
+
+" Find custom built ghc-mod, codex etc
+" let $PATH = $PATH . ':' . expand("~/.haskell-vim-now/bin")
+
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+" Turn on the WiLd menu
+set wildmenu
+" Tab-complete files up to longest unambiguous prefix
+set wildmode=list:longest,full
+
+
+" Show trailing whitespace
+set list
+" But only interesting whitespace
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set ai   " Auto indent
+set si   " Smart indent
+set wrap " Wrap lines
+
+" Pretty unicode haskell symbols
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal_enumerations = 1
+
+" Treat long lines as break lines (useful when moving around in them)
+nnoremap j gj
+nnoremap k gk
+
+
+" Return to last edit position when opening files (You want this!)
+augroup last_edit
+  autocmd!
+  autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
+augroup END
+" Remember info about open buffers on close
+set viminfo^=%
+
+
+" Slime {{{
+
+vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
+nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
+nmap <silent> <Leader>rv <Plug>SetTmuxVars
+
+" }}}
+
+" Alignment {{{
+
+" Stop Align plugin from forcing its mappings on us
+let g:loaded_AlignMapsPlugin=1
+" Align on equal signs
+map <Leader>a= :Align =<CR>
+" Align on commas
+map <Leader>a, :Align ,<CR>
+" Align on pipes
+map <Leader>a<bar> :Align <bar><CR>
+" Prompt for align character
+map <leader>ap :Align
+
+" Enable some tabular presets for Haskell
+let g:haskell_tabular = 1
+
+" }}}
+
+" Tags {{{
+
+set tags=tags;/,codex.tags;/
+
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
+
+" Generate haskell tags with codex and hscope
+map <leader>tg :!codex update --force<CR>:call system("git hscope -X TemplateHaskell")<CR><CR>:call LoadHscope()<CR>
+
+map <leader>tt :TagbarToggle<CR>
+
+set csprg=~/.haskell-vim-now/bin/hscope
+set csto=1 " search codex tags first
+set cst
+set csverb
+nnoremap <silent> <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
+" Automatically make cscope connections
+function! LoadHscope()
+  let db = findfile("hscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/hscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  endif
+endfunction
+au BufEnter /*.hs call LoadHscope()
+
+" }}}
+
+" Git {{{
+
+let g:extradite_width = 60
+" Hide messy Ggrep output and copen automatically
+function! NonintrusiveGitGrep(term)
+  execute "copen"
+  " Map 't' to open selected item in new tab
+  execute "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
+  execute "silent! Ggrep " . a:term
+  execute "redraw!"
+endfunction
+
+command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gg :copen<CR>:GGrep 
+nmap <leader>gl :Extradite!<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gb :Gblame<CR>
+
+function! CommittedFiles()
+  " Clear quickfix list
+  let qf_list = []
+  " Find files committed in HEAD
+  let git_output = system("git diff-tree --no-commit-id --name-only -r HEAD\n")
+  for committed_file in split(git_output, "\n")
+    let qf_item = {'filename': committed_file}
+    call add(qf_list, qf_item)
+  endfor
+  " Fill quickfix list with them
+  call setqflist(qf_list, '')
+endfunction
+
+" Show list of last-committed files
+nnoremap <silent> <leader>g? :call CommittedFiles()<CR>:copen<CR>
+
+" }}}
+
+" Haskell Interrogation {{{
+
+set completeopt+=longest
+
+" Use buffer words as default tab completion
+let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
+
+" But provide (neco-ghc) omnicompletion
+if has("gui_running")
+  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+  endif
+endif
+
+" Show types in completion suggestions
+let g:necoghc_enable_detailed_browse = 1
+
+" Type of expression under cursor
+nmap <silent> <leader>ht :GhcModType<CR>
+" Insert type of expression under cursor
+nmap <silent> <leader>hT :GhcModTypeInsert<CR>
+" GHC errors and warnings
+nmap <silent> <leader>hc :SyntasticCheck ghc_mod<CR>
+" Haskell Lint
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['haskell'] }
+nmap <silent> <leader>hl :SyntasticCheck hlint<CR>
+
+" Hoogle the word under the cursor
+nnoremap <silent> <leader>hh :Hoogle<CR>
+
+" Hoogle and prompt for input
+nnoremap <leader>hH :Hoogle 
+
+" Hoogle for detailed documentation (e.g. "Functor")
+nnoremap <silent> <leader>hi :HoogleInfo<CR>
+
+" Hoogle for detailed documentation and prompt for input
+nnoremap <leader>hI :HoogleInfo 
+
+" Hoogle, close the Hoogle window
+nnoremap <silent> <leader>hz :HoogleClose<CR>
+
+" }}}
+
+" Conversion {{{
+
+function! Pointfree()
+  call setline('.', split(system('pointfree '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
+endfunction
+vnoremap <silent> <leader>h. :call Pointfree()<CR>
+
+function! Pointful()
+  call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
+endfunction
+vnoremap <silent> <leader>h> :call Pointful()<CR>
+
+" }}}
+
+
+" }}}
+
+
 " Initialisation -------------------------------------------------------------- {{{
 
 filetype off
@@ -25,6 +274,7 @@ colorscheme noon
 " If you have it, this is somewhat preferable, otherwise use the above.
 " set guifont=Akkurat-Mono\ 10
 set guifont=Droid\ Sans\ Mono\ 10
+" set guifont=Hasklig\ Medium\ 10
 
 " }}}
 " General Options ------------------------------------------------------------- {{{
@@ -64,7 +314,13 @@ set shiftround
 set notimeout
 set nottimeout
 set autowrite
+
+" Folds
+set foldmethod=indent
+set foldnestmax=5
 set foldlevelstart=99
+set foldcolumn=0
+
 " set formatprg=fmt\ -w78
 
 " cscope
@@ -94,7 +350,8 @@ set noswapfile
 set undodir=~/.tmp/vim/undo/      " undo files
 set backupdir=~/.tmp/vim/backup/  " backups
 set directory=~/.tmp/vim/swap/    " swap files
-set backup                        " enabled
+set nobackup                      " disabled
+set nowb
 
 " }}}
 " Status line ----------------------------------------------------------------- {{{
@@ -315,6 +572,8 @@ let g:pyflakes_use_quickfix = 0
 nmap \c <Plug>CommentaryLine
 vmap \c <Plug>Commentary
 
+autocmd FileType cabal setlocal commentstring=--\ %s
+
 "   }}}
 "   > Pep8 __________________ {{{
 let g:pep8_map = '<F8>'
@@ -385,9 +644,6 @@ noremap <Right>  <nop>
 
 "   }}}
 "   > Leaders _______________ {{{
-
-let mapleader=','
-let maplocalleader=',' 
 
 " Finds tags, using 'AcK'. Defined below in the command section; will auto-complete
 " to tags.
@@ -489,3 +745,35 @@ command! Agn :! cd ~/dev/utils/get-notes && ./get_notes.py && cd -
 source ~/.vimrc.local
 
 " }}}
+
+
+
+let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
+let s:minfontsize = 6
+let s:maxfontsize = 16
+function! AdjustFontSize(amount)
+  if has("gui_gtk2") && has("gui_running")
+    let fontname = substitute(&guifont, s:pattern, '\1', '')
+    let cursize = substitute(&guifont, s:pattern, '\2', '')
+    let newsize = cursize + a:amount
+    if (newsize >= s:minfontsize) && (newsize <= s:maxfontsize)
+      let newfont = fontname . newsize
+      let &guifont = newfont
+    endif
+  else
+    echoerr "You need to run the GTK2 version of Vim to use this function."
+  endif
+endfunction
+
+function! LargerFont()
+  call AdjustFontSize(1)
+endfunction
+command! LargerFont call LargerFont()
+
+function! SmallerFont()
+  call AdjustFontSize(-1)
+endfunction
+command! SmallerFont call SmallerFont()
+
+nmap <M--> :call SmallerFont()<cr>
+nmap <M-=> :call LargerFont()<cr>
