@@ -1,13 +1,9 @@
 name:                nvds-xmonad
-version:             0.1.0.0
-synopsis:            Simple project template from stack
-description:         Please see README.md
-homepage:            http://github.com/githubuser/nvds-xmonad#readme
+version:             0.2.0.0
 license:             BSD3
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2016 Author Here
-category:            Web
+author:              Noon van der Silk
+maintainer:          noonsilk@gmail.com
+copyright:           2016 Noon van der Silk
 
 dependencies:
   - base >= 4.7 && < 5
