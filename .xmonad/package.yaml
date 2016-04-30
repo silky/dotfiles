@@ -1,0 +1,20 @@
+name:                nvds-xmonad
+version:             0.1.0.0
+synopsis:            Simple project template from stack
+description:         Please see README.md
+homepage:            http://github.com/githubuser/nvds-xmonad#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2016 Author Here
+category:            Web
+
+dependencies:
+  - base >= 4.7 && < 5
+  - containers
+  - xmonad
+  - xmonad-contrib
+
+executables:
+  xmonad:
+    main:             xmonad.hs

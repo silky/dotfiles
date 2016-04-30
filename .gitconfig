@@ -7,7 +7,7 @@
 
 [user]
     name = silky
-    email = noonsilk+github@gmail.com
+    email = noonsilk+-noonsilk@gmail.com
 
 [giggle]
 	main-window-maximized = false
@@ -32,4 +32,9 @@
 [credential]
 	helper = gnome-keyring
 [core]
-	editor = /usr/bin/vim
+    editor = /usr/bin/vim
+;
+; Magic to help torch work.
+; [url "https://"]
+;    insteadOf = git://
+;

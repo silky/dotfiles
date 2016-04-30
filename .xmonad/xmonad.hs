@@ -34,6 +34,7 @@ import XMonad.Actions.WindowGo
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.CycleWS
+import XMonad.Layout.LayoutHints
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -46,7 +47,7 @@ import qualified Data.Map        as M
 --  selection through windows-<letter>, where the letter indicates
 --  specific layout
 
-myLayout = smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
+myLayout = layoutHints $ smartBorders $ named "C:Tiled" tiled ||| named "C:MTiled" (Mirror tiled)
     ||| noBorders Full
     ||| named "CenteredMaster" (zoomRow)
     --
@@ -81,7 +82,7 @@ myKeys   = [
    , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "CenteredMaster")
    -- The "Menu" key next to the Windows key
    -- EasyXMotion is courtesy of Loki: https://github.com/loki42/easyxmotion
-   , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
+   -- , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
 
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
@@ -112,7 +113,7 @@ myMouseBindings x = M.fromList $
 -- Setup
 --
 main = xmonad $ ewmh defaultConfig {
-    borderWidth            = 1
+      borderWidth          = 1
     , terminal             = "/usr/bin/konsole"
     , normalBorderColor    = "#000000"
     , focusedBorderColor   = "#e01b4c"
@@ -129,7 +130,7 @@ main = xmonad $ ewmh defaultConfig {
     -- don't care to investigate right now. If you have troubles
     -- there, just comment it out (or fix it and tell me!).
     --
-    , logHook              = updatePointer (Relative 0.5 0.5)
+    , logHook              = updatePointer (0.5, 0.5) (0, 0)
 
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)

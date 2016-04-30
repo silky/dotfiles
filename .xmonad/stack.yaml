@@ -1,0 +1,18 @@
+resolver: lts-3.0
+packages:
+  - '.'
+  - ../../xmonad
+  - ../../xmonad-contrib
+
+# Override default flag values for local packages and extra-deps
+flags:
+    xmonad:
+        testing: false
+
+    xmonad-contrib:
+        testing: false
+        use_xft: false
+
+# Extra package databases containing global packages
+extra-package-dbs: []
+

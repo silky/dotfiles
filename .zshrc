@@ -68,8 +68,7 @@ alias gitjk="history 10 | tac | gitjk_cmd"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 source /usr/local/bin/virtualenvwrapper.sh
-
-source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/chruby.sh
 
 
 # added by travis gem
@@ -84,3 +83,6 @@ export CUDA_HOME=/usr/local/cuda
 
 export NVM_DIR="/home/noon/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+. /home/noon/torch/install/bin/torch-activate
