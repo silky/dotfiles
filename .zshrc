@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs...
-export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/dev/ext/quipper/quipper-0.4/quipper/scripts:/usr/lib/mono/4.0/:/home/noon/node_modules/.bin:/home/noon/.rvm/bin:/home/noon/tools/MiniZinc:/home/noon/tools/swift-2.2/usr/bin/:$PATH
+export PATH=$HOME/.cabal/bin:/home/noon/bin:/home/noon/dev/silky-github/utils/find-todo:/usr/local/texlive/2011/bin/x86_64-linux:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/noon/.cabal/bin:/home/noon/node_modules/.bin:/home/noon/tools/MiniZinc:/home/noon/tools/swift-2.2/usr/bin/:$PATH
 
 export GUROBI_HOME="/opt/gurobi400/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
@@ -69,8 +69,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 source /usr/local/bin/virtualenvwrapper.sh
 
-source /usr/local/share/chruby/chruby.sh
-
 
 # added by travis gem
 [ -f /home/noon/.travis/travis.sh ] && source /home/noon/.travis/travis.sh
@@ -84,3 +82,5 @@ export CUDA_HOME=/usr/local/cuda
 
 export NVM_DIR="/home/noon/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+unsetopt autonamedirs
