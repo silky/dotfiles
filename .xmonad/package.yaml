@@ -1,0 +1,16 @@
+name:                nvds-xmonad
+version:             0.2.0.0
+license:             BSD3
+author:              Noon van der Silk
+maintainer:          noonsilk@gmail.com
+copyright:           2016 Noon van der Silk
+
+dependencies:
+  - base >= 4.7 && < 5
+  - containers
+  - xmonad
+  - xmonad-contrib
+
+executables:
+  xmonad:
+    main:             xmonad.hs
