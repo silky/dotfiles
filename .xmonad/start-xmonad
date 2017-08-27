@@ -1,0 +1,17 @@
+#!/usr/bin/env bash 
+# Identify the home of our gtkrc file, important for setting styles of 
+# gtk-based applications
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+
+# Load X resources (fixes some font issues)
+xrdb -merge .Xresources
+
+
+# Remap caps lock to left control. This is not strictly speaking
+# xmonad related, but it's handy if you're a vim user.
+setxkbmap -option caps:escape
+
+~/.dropbox-dist/dropboxd &
+
+exec xmonad
