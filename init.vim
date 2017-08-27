@@ -8,6 +8,8 @@ Plug 'tpope/vim-commentary'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 call plug#end()
 
