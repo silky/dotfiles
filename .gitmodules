@@ -1,27 +1,3 @@
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
-[submodule ".vim/bundle/Align"]
-	path = .vim/bundle/Align
-	url = git@github.com:vim-scripts/Align.git
-[submodule ".vim/bundle/vimproc.vim"]
-	path = .vim/bundle/vimproc.vim
-	url = git@github.com:Shougo/vimproc.vim.git
-[submodule ".vim/bundle/vim-bbye"]
-	path = .vim/bundle/vim-bbye
-	url = git@github.com:moll/vim-bbye.git
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
-	url = git@github.com:nathanaelkane/vim-indent-guides.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-extradite"]
-	path = .vim/bundle/vim-extradite
-	url = git@github.com:int3/vim-extradite.git
-[submodule ".vim/bundle/gundo"]
-	path = .vim/bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
 [submodule ".vim/bundle/pep8"]
 	path = .vim/bundle/pep8
 	url = git://github.com/vim-scripts/pep8.git
@@ -34,66 +10,15 @@
 [submodule ".vim/bundle/pydoc"]
 	path = .vim/bundle/pydoc
 	url = git://github.com/sjl/pydoc.vim.git
-[submodule ".vim/bundle/easymotion"]
-	path = .vim/bundle/easymotion
-	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/linediff"]
-	path = .vim/bundle/linediff
-	url = git://github.com/AndrewRadev/linediff.vim.git
-[submodule ".vim/bundle/tabman"]
-	path = .vim/bundle/tabman
-	url = git://github.com/kien/tabman.vim.git
 [submodule ".vim/bundle/mathematic.vim"]
 	path = .vim/bundle/mathematic.vim
 	url = git://github.com/Rykka/mathematic.vim.git
-[submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
-	url = git://github.com/wincent/Command-T.git
-[submodule ".vim/bundle/vim-commentary"]
-	path = .vim/bundle/vim-commentary
-	url = git://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/LaTeX-Box"]
 	path = .vim/bundle/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
 [submodule ".vim/bundle/accelerated_smooth_scroll"]
 	path = .vim/bundle/accelerated_smooth_scroll
 	url = git@github.com:vim-scripts/accelerated-smooth-scroll.git
-[submodule ".vim/bundle/vimoutliner"]
-	path = .vim/bundle/vimoutliner
-	url = https://github.com/vimoutliner/vimoutliner.git
-[submodule ".vim/bundle/haskell-vim"]
-	path = .vim/bundle/haskell-vim
-	url = https://github.com/raichoo/haskell-vim.git
-[submodule ".vim/bundle/vim-pandoc"]
-	path = .vim/bundle/vim-pandoc
-	url = https://github.com/vim-pandoc/vim-pandoc
-[submodule ".vim/bundle/vim-pandoc-syntax"]
-	path = .vim/bundle/vim-pandoc-syntax
-	url = https://github.com/vim-pandoc/vim-pandoc-syntax
-[submodule ".vim/bundle/vim-hoogle"]
-	path = .vim/bundle/vim-hoogle
-	url = https://github.com/Twinside/vim-hoogle
 [submodule ".vim/bundle/vimtux"]
 	path = .vim/bundle/vimtux
 	url = https://github.com/vim-scripts/vimtux
-[submodule ".vim/bundle/vimux"]
-	path = .vim/bundle/vimux
-	url = https://github.com/benmills/vimux
-[submodule ".vim/bundle/fsharp"]
-	path = .vim/bundle/fsharp
-	url = https://github.com/kongo2002/fsharp-vim.git
-[submodule ".vim/bundle/vim-cloure-static"]
-	path = .vim/bundle/vim-cloure-static
-	url = git@github.com:guns/vim-clojure-static.git
-[submodule ".vim/bundle/vim-fireplace"]
-	path = .vim/bundle/vim-fireplace
-	url = git@github.com:tpope/vim-fireplace.git
-[submodule ".vim/bundle/vim-classpath"]
-	path = .vim/bundle/vim-classpath
-	url = git@github.com:tpope/vim-classpath.git
-[submodule ".vim/bundle/Dockerfile"]
-	path = .vim/bundle/Dockerfile
-	url = https://github.com/ekalinin/Dockerfile.vim.git
-[submodule ".vim/bundle/vim-syntax-shakespeare"]
-	path = .vim/bundle/vim-syntax-shakespeare
-	url = git@github.com:pbrisbin/vim-syntax-shakespeare.git
