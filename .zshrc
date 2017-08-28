@@ -11,7 +11,7 @@ if ! zgen saved; then
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/command-not-found
-  zgen oh-my-zsh themes/ys
+  zgen load silky/noon.zsh-theme noon.zsh-theme
   
   # generate the init script from plugins above
   zgen save
@@ -30,7 +30,9 @@ export PATH="/home/noon/.cargo/bin:$PATH"
 alias v=nvim
 alias gg="sudo apt-get install"
 
-
+# Env vars
 export TERM=xterm-256color
 
+
+# Auto-added things follow ...
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
