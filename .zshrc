@@ -30,8 +30,16 @@ export PATH="/home/noon/.cargo/bin:$PATH"
 alias v=nvim
 alias gg="sudo apt-get install"
 
+## Git-Related
+alias gpr='git pull --rebase'
+alias st='git status'
+alias ci='git commit -m'
+alias pp='git push'
+alias gc='git clone --recursive'
+
 # Env vars
 export TERM=xterm-256color
+export EDITOR=nvim
 
 
 # Auto-added things follow ...
