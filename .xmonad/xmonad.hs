@@ -91,6 +91,7 @@ myKeys   = [
    , ((mod1Mask, xK_e), spawn "echo | dmenu -p 'google: ' | xargs -I '{}' surf https://www.google.com/search?q='{}'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
+   , ((mod1Mask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png")
    -- Okay, so this only works on floating windows.
    -- , ((mod1Mask, xK_r), placeFocused (fixed (0,0)))
    -- , ((mod1Mask, xK_f), withFocused float)
