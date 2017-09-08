@@ -88,7 +88,6 @@ myKeys   = [
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
-   , ((mod1Mask, xK_e), spawn "echo | dmenu -p 'google: ' | xargs -I '{}' surf https://www.google.com/search?q='{}'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png")
