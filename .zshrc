@@ -1,5 +1,5 @@
 # load zgen
-source "${HOME}/.zgen/zgen.zsh"
+source "$HOME/.zgen/zgen.zsh"
 
 # Case-sensitive autocompleting
 CASE_SENSITIVE="true"
@@ -11,20 +11,27 @@ if ! zgen saved; then
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/command-not-found
-  zgen load silky/noon.zsh-theme noon.zsh-theme
+  # zgen load silky/noon.zsh-theme noon.zsh-theme
+  zgen load /home/noon/dev/noon.zsh-theme/noon.zsh-theme
   
   # generate the init script from plugins above
   zgen save
 fi
 
 # Conda
-export PATH="/home/noon/tools/miniconda3/bin:$PATH"
+export PATH="$HOME/tools/miniconda3/bin:$PATH"
 
 # Haskell
-export PATH="/home/noon/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Rust
-export PATH="/home/noon/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Go
+export GOPATH="$HOME/tools/gocode"
+export GOROOT="$HOME/tools/go"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOROOT/bin:$PATH"
 
 # Alias'
 alias v=nvim
@@ -41,6 +48,8 @@ alias gc='git clone --recursive'
 export TERM=xterm-256color
 export EDITOR=nvim
 
+# Tools
+export PATH="$HOME/tools/storyboarder:$PATH"
 
 # Auto-added things follow ...
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
