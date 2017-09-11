@@ -9,7 +9,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 

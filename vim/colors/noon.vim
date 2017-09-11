@@ -13,12 +13,14 @@ let g:colors_name = "noon"
 " The normal background colour
 highlight Normal                    ctermbg=236
 highlight Comment	    ctermfg=206
-highlight StatusLine    ctermfg=175 ctermbg=235  cterm=none
+
+highlight StatusLine   ctermfg=175 ctermbg=17  cterm=none
+highlight StatusLineNC ctermfg=175 ctermbg=235  cterm=none
+
 highlight Todo		    ctermfg=216 ctermbg=236
 highlight Visual        ctermfg=0   ctermbg=111
 highlight Search	    ctermfg=0   ctermbg=209
 highlight Statement     ctermfg=220
-highlight StatusLineNC  ctermfg=17  ctermbg=175
 highlight VertSplit     ctermfg=17  ctermbg=175
 highlight Identifier    ctermfg=204                cterm=none
 highlight MatchParen    ctermbg=233
