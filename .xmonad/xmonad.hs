@@ -87,10 +87,11 @@ myKeys   = [
    -- Obvious
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
-   , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
+   -- , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png")
+   , ((mod1Mask .|. shiftMask, xK_s), spawn "maim -s ~/Pictures/Screenshots/$(date +%s).png")
    -- Okay, so this only works on floating windows.
    -- , ((mod1Mask, xK_r), placeFocused (fixed (0,0)))
    -- , ((mod1Mask, xK_f), withFocused float)
