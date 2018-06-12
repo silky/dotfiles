@@ -83,13 +83,17 @@ myKeys   = [
    -- The "Menu" key next to the Windows key
    -- EasyXMotion is courtesy of Loki: https://github.com/loki42/easyxmotion
    -- , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
+   , ((mod1Mask, xK_i), do
+       sendMessage $ JumpToLayout "Full"
+       spawn "hide")
 
-   -- Obvious
+   -- Shutting down
    , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
    , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
    -- , ((layoutChangeModMask, xK_s), spawn "gksu 'pm-suspend'")
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
+   , ((mod1Mask, xK_e), spawn "konsole -e nvim")
    , ((mod1Mask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png")
    , ((mod1Mask .|. shiftMask, xK_s), spawn "maim -s ~/Pictures/Screenshots/$(date +%s).png")
    -- Okay, so this only works on floating windows.
