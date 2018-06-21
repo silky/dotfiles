@@ -2,35 +2,39 @@
 " Vim color file
 "
 " By:  Noon Silk <noonsilk@gmail.com>
+"
+" https://jonasjacek.github.io/colors/
 
 hi clear
-set background=dark
+set background=light
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "noon"
+let g:colors_name = "noon-light"
 
 " The normal background colour
-highlight Normal                      ctermbg=236
-highlight Comment	    ctermfg=206   
-                                      
-highlight StatusLine    ctermfg=175   ctermbg=17   cterm=none
-highlight StatusLineNC  ctermfg=175   ctermbg=235  cterm=none
-highlight VertSplit     ctermfg=17    ctermbg=17
-                                      
-highlight Todo		    ctermfg=216   ctermbg=236
+highlight Normal                      ctermbg=none
+
+highlight Comment	    ctermfg=21
+" highlight Comment	    ctermfg=165
+highlight Statement     ctermfg=200
+highlight Constant	    ctermfg=197
+highlight Identifier    ctermfg=27                 cterm=none
+highlight PreProc	    ctermfg=57
+highlight Special	    ctermfg=243
+
+highlight StatusLine    ctermfg=160   ctermbg=229  cterm=none
+highlight StatusLineNC  ctermfg=160   ctermbg=250  cterm=none
+highlight VertSplit     ctermfg=229   ctermbg=229
+
+highlight Todo		    ctermfg=none  ctermbg=229
 highlight Visual        ctermfg=0     ctermbg=111
 highlight Search	    ctermfg=0     ctermbg=209
-highlight Statement     ctermfg=220
-highlight Identifier    ctermfg=204                cterm=none
-highlight MatchParen    ctermbg=233
+highlight MatchParen    ctermbg=229
 
 
 
-highlight Constant	 ctermfg=81
-highlight PreProc	 ctermfg=10
-highlight Type		 ctermfg=2
-highlight Special	 ctermfg=12
+highlight Type		 ctermfg=93
 highlight Error					ctermbg=9							guibg=#ff0000
 
 highlight Directory  ctermfg=2						  guifg=#00c000

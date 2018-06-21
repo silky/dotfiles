@@ -2,16 +2,20 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'tpope/vim-commentary'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'ElmCast/elm-vim'
 
 call plug#end()
+
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " Firstly define the leaders.
 let mapleader=','
@@ -22,8 +26,7 @@ set formatprg="PARINIT='rTbgqR B=.,?_A_a Q=_s>|' par\ -w72"
 
 set nocompatible
 syntax on
-set background=dark
-colorscheme noon
+colorscheme noon-light
 
 
 " Set 7 lines to the cursor - when moving vertically using j/k
@@ -129,6 +132,11 @@ set backupdir=~/.tmp/vim/backup/  " backups
 set directory=~/.tmp/vim/swap/    " swap files
 set nobackup                      " disabled
 set nowb
+set nocursorcolumn
+set nocursorline
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+set guicursor=
 
 
 " Status line -----------------------------------------------------------------
@@ -223,8 +231,8 @@ noremap <leader>p "+p
 " Yank to the general clipboard.
 noremap <leader>y "+y
 
-noremap <Tab>e :CtrlP<cr>
-
+" Mapping selecting mappings
+nmap <Tab>e :Files<cr>
 
 " Window Navigation
 noremap <Tab>h <C-w>h
