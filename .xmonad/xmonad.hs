@@ -109,15 +109,16 @@ myKeys   = [
 -- Toggle the active workspace with the 'Forward/Back' mouse buttons.
 myMouseMod = 0
 myMouseBindings x = M.fromList $
-    [ ((myMouseMod, 8), (\w -> moveTo Prev NonEmptyWS))
-    , ((myMouseMod, 9), (\w -> moveTo Next NonEmptyWS))
-    -- , ((myMouseMod, 9), (\w -> toggleWS))
+    [ ((myMouseMod, 8), const $ moveTo Prev NonEmptyWS)
+    , ((myMouseMod, 9), const $ moveTo Next NonEmptyWS)
+    , ((mod1Mask, button4), const $ spawn "BumpSound up")
+    , ((mod1Mask, button5), const $ spawn "BumpSound down")
     ]
 
 
 -- Setup
 --
-main = xmonad $ ewmh defaultConfig {
+main = xmonad $ ewmh def {
       borderWidth          = 1
     , terminal             = "/usr/bin/konsole"
     , normalBorderColor    = "#000000"
