@@ -117,9 +117,9 @@ set autowrite
 set guioptions=aegit
 set completeopt=longest,menuone,preview " TODO: Review
 set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set wrap
 set textwidth=78
