@@ -20,21 +20,32 @@
     hist = log --oneline --graph --decorate
 	d = difftool
 	edit = !$EDITOR \"$(git ls-files | tmenu)\"
+
 [push]
 	default = matching
+
 [diff]
 	tool = vimdiff
 	submodule = log
+
 [difftool]
 	prompt = false
+
 [status]
 	submodulesummary = 1
+
 [credential]
 	helper = gnome-keyring
+
 [core]
-    editor = /usr/bin/vim
-;
+    editor = /usr/bin/nvim
+
 ; Magic to help torch work.
 ; [url "https://"]
 ;    insteadOf = git://
 ;
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
