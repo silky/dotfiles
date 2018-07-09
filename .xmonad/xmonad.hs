@@ -141,7 +141,9 @@ main = xmonad $ ewmh def {
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
-    , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\`\", \"\\`tl\\``\"")
+    , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\``\"")
       -- Consider changing these to "Tab+", but it must be that it
       -- doesn't interrupt anything else.
     ]
+
+
