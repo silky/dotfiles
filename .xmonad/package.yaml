@@ -13,4 +13,6 @@ dependencies:
 
 executables:
   xmonad:
-    main:             xmonad.hs
+    other-modules:
+      - TwoBig
+    main: xmonad.hs

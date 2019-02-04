@@ -39,10 +39,10 @@ export PATH="$HOME/tools/node/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Go
-export GOPATH="$HOME/tools/gocode"
-export GOROOT="$HOME/tools/go"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="$GOROOT/bin:$PATH"
+# export GOPATH="$HOME/tools/gocode"
+# export GOROOT="$HOME/tools/go"
+# export PATH="$GOPATH/bin:$PATH"
+# export PATH="$GOROOT/bin:$PATH"
 
 
 # Ruby
@@ -72,18 +72,21 @@ pub() { mosquitto_pub -h $1 -t $2 -m “$3”; }
 
 
 alias v=nvim
-alias gg="sudo apt-get install"
+alias gg="sudo apt install"
 alias df="df -h"
 alias g="stack ghci"
+alias p="python"
+alias b="stack build"
 alias du="du -h"
 # Don't return matches on stupidly long lines
 alias rg="rg -M 1000"
 alias sr="stack run --"
 alias rr="commando -c echo | grep --line-buffered Modified | conscript"
 alias n='konsole --workdir `pwd` &'
+alias 📚="stack"
 
 # Do all my upgrades ...
-alias upg="sudo apt-get update && sudo apt-get upgrade -y && stack upgrade --git"
+alias upg="sudo apt update && sudo apt upgrade -y && stack upgrade --git --git-branch stable"
 
 # Git-Related
 alias gpr='git pull --rebase'
@@ -100,7 +103,7 @@ export TERM=xterm-256color
 export EDITOR=nvim
 
 # Tools
-export PATH="$HOME/tools/storyboarder:$PATH"
+# export PATH="$HOME/tools/storyboarder:$PATH"
 
 #
 export AIKO_MQTT_HOST=localhost
@@ -110,4 +113,3 @@ CASE_SENSITIVE=true
 
 # Auto-added things follow ...
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-

@@ -12,6 +12,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
+Plug 'vmchale/dhall-vim'
 
 call plug#end()
 

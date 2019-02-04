@@ -20,6 +20,7 @@
     hist = log --oneline --graph --decorate
 	d = difftool
 	edit = !$EDITOR \"$(git ls-files | tmenu)\"
+	quick-stats = ! /usr/local/bin/git-quick-stats
 
 [push]
 	default = matching
