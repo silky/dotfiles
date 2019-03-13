@@ -232,8 +232,12 @@ noremap <leader>p "+p
 " Yank to the general clipboard.
 noremap <leader>y "+y
 
+set termguicolors
+set clipboard+=unnamed
+
 " Mapping selecting mappings
 nmap <Tab>e :Files<cr>
+nmap <Tab>s :Ag<cr>
 
 " Window Navigation
 noremap <Tab>h <C-w>h
