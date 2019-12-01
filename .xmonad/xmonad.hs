@@ -49,6 +49,10 @@ import qualified Data.Map        as M
 --  selection through windows-<letter>, where the letter indicates
 --  specific layout
 
+
+-- TODO: Maybe add 'ThreeColumns' ?
+-- https://betweentwocommits.com/blog/xmonad-layouts-guide
+--
 myLayout = layoutHints $ smartBorders $ 
         named "C:Tiled" tiled 
     ||| named "C:MTiled" (Mirror tiled)
@@ -155,5 +159,3 @@ main = xmonad $ ewmh def {
       -- Consider changing these to "Tab+", but it must be that it
       -- doesn't interrupt anything else.
     ]
-
-

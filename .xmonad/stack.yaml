@@ -1,4 +1,7 @@
 resolver: lts-3.0
+
+# Moderate crime against package management. These paths just point to my copy
+# of these repos.
 packages:
   - '.'
   - ../../xmonad

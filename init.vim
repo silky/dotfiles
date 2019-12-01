@@ -13,6 +13,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'vmchale/dhall-vim'
+Plug 'posva/vim-vue'
+
 
 call plug#end()
 
@@ -135,6 +137,7 @@ set nobackup                      " disabled
 set nowb
 set nocursorcolumn
 set nocursorline
+set rnu
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 set guicursor=
@@ -202,6 +205,8 @@ noremap ` <C-^>
 " Faster way to get into command mode.
 noremap ; :
 
+noremap YY :%y+<cr>
+
 
 " Shortcuts for saving
 nnoremap <S-Space> :wa<cr>
@@ -232,7 +237,7 @@ noremap <leader>p "+p
 " Yank to the general clipboard.
 noremap <leader>y "+y
 
-set termguicolors
+" set termguicolors
 set clipboard+=unnamed
 
 " Mapping selecting mappings
@@ -284,3 +289,6 @@ augroup ft_pandoc
     au FileType pandoc setlocal nocindent
     au FileType pandoc setlocal formatoptions=tcqron1
 augroup END
+
+let g:elm_format_autosave = 0
+

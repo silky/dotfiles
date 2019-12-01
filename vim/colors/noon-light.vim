@@ -32,6 +32,9 @@ highlight Visual        ctermfg=0     ctermbg=111
 highlight Search	    ctermfg=0     ctermbg=209
 highlight MatchParen    ctermbg=229
 
+highlight LineNr        ctermfg=246
+highlight CursorLineNr  ctermfg=246
+
 
 
 highlight Type		 ctermfg=93

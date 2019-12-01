@@ -82,7 +82,6 @@ alias du="du -h"
 alias rg="rg -M 1000"
 alias sr="stack run --"
 alias rr="commando -c echo | grep --line-buffered Modified | conscript"
-alias n='konsole --workdir `pwd` &'
 alias 📚="stack"
 
 # Do all my upgrades ...
@@ -97,6 +96,8 @@ alias pp='git push'
 alias gc='git clone --recursive'
 alias sa='source activate `basename \`pwd\``'
 alias shh='ssh -q'
+alias j='jrnl'
+alias dc='docker-compose'
 
 # Env vars
 export TERM=xterm-256color
@@ -113,3 +114,14 @@ CASE_SENSITIVE=true
 
 # Auto-added things follow ...
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/noon/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/home/noon/tools/google-cloud-sdk/path.zsh.inc'; fi
+#
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/noon/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/noon/tools/google-cloud-sdk/completion.zsh.inc'; fi

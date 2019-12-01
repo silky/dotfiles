@@ -1,2 +1,4 @@
 .stack-work
 nvds-xmonad.cabal
+xmonad.errors
+stack.yaml.lock
