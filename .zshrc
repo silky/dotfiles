@@ -103,11 +103,9 @@ alias dc='docker-compose'
 export TERM=xterm-256color
 export EDITOR=nvim
 
-# Tools
-# export PATH="$HOME/tools/storyboarder:$PATH"
+# SSH
+alias mona='ssh -A -X eltahawy.local'
 
-#
-export AIKO_MQTT_HOST=localhost
 # Case-sensitive autocompleting
 export CASE_SENSITIVE=true
 CASE_SENSITIVE=true
@@ -125,3 +123,6 @@ if [ -f '/home/noon/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/home/noon/t
 #
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/noon/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/noon/tools/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /home/noon/.config/broot/launcher/bash/br
+source /home/noon/.ghcup/env
