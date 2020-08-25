@@ -38,6 +38,10 @@ export PATH="$HOME/tools/unity/Editor:$PATH"
 export PATH="$HOME/tools/node/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Nim: https://nim-lang.org/install_unix.html
+export PATH="$HOME/tools/nim/nim-1.0.6/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
+
 # Go
 # export GOPATH="$HOME/tools/gocode"
 # export GOROOT="$HOME/tools/go"
@@ -97,7 +101,20 @@ alias gc='git clone --recursive'
 alias sa='source activate `basename \`pwd\``'
 alias shh='ssh -q'
 alias j='jrnl'
+
+# Shorter docker-compose
 alias dc='docker-compose'
+
+# Up (with detach) and follow
+upf() {
+  if [ "$1" != "" ]
+  then
+    docker-compose up -d "$1" && docker-compose logs -f "$1"
+  else
+    echo "upf: Need an argument; the image to run!"
+  fi
+}
+
 
 # Env vars
 export TERM=xterm-256color
@@ -125,4 +142,7 @@ if [ -f '/home/noon/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/home/noon/t
 if [ -f '/home/noon/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/noon/tools/google-cloud-sdk/completion.zsh.inc'; fi
 
 source /home/noon/.config/broot/launcher/bash/br
-source /home/noon/.ghcup/env
+
+# https://stackoverflow.com/questions/53825857/error-ld-so-object-libgtk3-nocsd-so-0-from-ld-preload-cannot-be-preloaded
+# Comes about when running nix
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0

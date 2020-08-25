@@ -14,6 +14,7 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'posva/vim-vue'
+Plug 'djoshea/vim-autoread'
 
 
 call plug#end()
