@@ -77,7 +77,7 @@ pub() { mosquitto_pub -h $1 -t $2 -m “$3”; }
 
 alias v=nvim
 alias gg="sudo apt install"
-alias df="df -h"
+alias df="df -h -t ext4"
 alias g="stack ghci"
 alias p="python"
 alias b="stack build"
@@ -100,10 +100,13 @@ alias pp='git push'
 alias gc='git clone --recursive'
 alias sa='source activate `basename \`pwd\``'
 alias shh='ssh -q'
-alias j='jrnl'
+alias cl='clash.clashi'
 
 # Shorter docker-compose
 alias dc='docker-compose'
+alias dcl='docker-compose logs -f'
+
+
 
 # Up (with detach) and follow
 upf() {
@@ -114,7 +117,6 @@ upf() {
     echo "upf: Need an argument; the image to run!"
   fi
 }
-
 
 # Env vars
 export TERM=xterm-256color

@@ -293,3 +293,8 @@ augroup END
 
 let g:elm_format_autosave = 0
 
+" https://ro-che.info/articles/2020-07-08-integrate-ghcid-vim
+set errorformat=%C%*\\s•\ %m,
+               \%-C\ %.%#,
+               \%A%f:%l:%c:\ %t%.%#
+
