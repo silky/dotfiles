@@ -19,7 +19,7 @@ Plug 'djoshea/vim-autoread'
 
 call plug#end()
 
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+" let $FZF_DEFAULT_COMMAND = 'rg -l -g ""'
 
 " Firstly define the leaders.
 let mapleader=','
