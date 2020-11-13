@@ -10,6 +10,7 @@ dependencies:
   - containers
   - xmonad
   - xmonad-contrib
+  - X11
 
 executables:
   xmonad:

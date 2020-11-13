@@ -1,4 +1,4 @@
-resolver: lts-3.0
+resolver: lts-16.12
 
 # Moderate crime against package management. These paths just point to my copy
 # of these repos.
@@ -18,4 +18,3 @@ flags:
 
 # Extra package databases containing global packages
 extra-package-dbs: []
-
