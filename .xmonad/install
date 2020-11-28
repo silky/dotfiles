@@ -2,4 +2,5 @@
 
 set -e
 
-./xmonad-x86_64-linux --recompile && ./xmonad-x86_64-linux --restart
+./xmonad-x86_64-linux --recompile
+./xmonad-x86_64-linux --restart

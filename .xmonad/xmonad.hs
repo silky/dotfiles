@@ -78,7 +78,9 @@ myLayout = layoutHints $ smartBorders $
 -- toggle, but at least it's possible to change to specific
 -- layouts.
 
+
 layoutChangeModMask = mod1Mask .|. shiftMask
+
 
 myKeys   = 
    [ ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
@@ -90,6 +92,7 @@ myKeys   =
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_e), spawn "konsole -e nvim")
+   , ((mod1Mask, xK_r), screenWorkspace 1 >>= flip whenJust (windows . W.view))
    --
    -- Flameshot: <https://github.com/lupoDharkael/flameshot>
    -- 
@@ -114,7 +117,6 @@ myMouseBindings x = M.fromList $
     , ((myMouseMod, 9), const $ moveTo Next NonEmptyWS)
     ]
 
--- TODO: Work out a way to toggle focus to the next WINDOW, not workspace.
 
 -- Setup
 main = xmonad $ ewmh def {
