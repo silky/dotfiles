@@ -2,7 +2,7 @@
 -- This is a simple config with a focus on being able to switch between
 -- layouts easily.
 --
--- Author: Noon Silk
+-- Author: Noon van der Silk
 -- Location: http://github.com/silky/dotfiles
 --
 -- Inspiration:
@@ -10,6 +10,7 @@
 --  http://www.haskell.org/wikiupload/9/9c/NNoeLLs_Desktop_2011-08-31.png
 --  http://xmonad.org/xmonad-docs/xmonad/src/XMonad-Config.html
 --  https://bitbucket.org/tobyodavies/shared/src
+--  https://betweentwocommits.com/blog/xmonad-layouts-guide
 
 import System.IO
 import XMonad hiding ( (|||) )
@@ -36,6 +37,7 @@ import XMonad.Actions.UpdatePointer
 import XMonad.Actions.CycleWS
 import XMonad.Layout.Groups.Examples
 import XMonad.Layout.LayoutHints
+import XMonad.Layout.MultiColumns
 import TwoBig
 
 import qualified XMonad.StackSet as W
@@ -50,20 +52,14 @@ import qualified Data.Map        as M
 --  specific layout
 
 
--- TODO: Maybe add 'ThreeColumns' ?
--- https://betweentwocommits.com/blog/xmonad-layouts-guide
---
 myLayout = layoutHints $ smartBorders $ 
-        named "C:Tiled" tiled 
-    ||| named "C:MTiled" (Mirror tiled)
-    ||| noBorders Full
+        named "Tiled"          tiled 
+    ||| named "MTiled"         (Mirror tiled)
     ||| named "CenteredMaster" (zoomRow)
-    --
-    -- I don't care about Spiral at the momemnt, but maybe at some point ...
-    -- ||| named "C:Spiral" (spiral (3/4))
+    ||| named "TallCols"       (Mirror $ multiCol [1] 1 0.01 (0.5))
+    ||| named "Circle"         Circle
+    ||| named "Big"            (OneBig (3/4) (3/4))
     -- ||| named "C:Circle" rowOfColumns
-    ||| named "C:Circle" Circle
-    ||| named "C:Big" (OneBig (3/4) (3/4))
   where
      tiled   = Tall nmaster delta ratio
 
@@ -71,7 +67,7 @@ myLayout = layoutHints $ smartBorders $
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = (2/(1 + (toRational(sqrt(5)::Double))))
+     ratio   = (2/(1 + (toRational (sqrt 5 :: Double))))
 
      -- Percent of screen to increment by when resizing panes
      delta   = 2/100
@@ -84,42 +80,29 @@ myLayout = layoutHints $ smartBorders $
 
 layoutChangeModMask = mod1Mask .|. shiftMask
 
-myKeys   = [
-     ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
-   , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "C:Tiled")
-   , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "C:MTiled")
-   , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "C:Big")
-   -- , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "CenteredMaster")
-   , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "C:Circle")
-   -- The "Menu" key next to the Windows key
-   -- EasyXMotion is courtesy of Loki: https://github.com/loki42/easyxmotion
-   -- , ((0, xK_Menu), spawn "/home/noon/bin/easyxmotion.py --colour=#e01b4c --font='-misc-fixed-bold-r-normal--30-0-100-100-c-0-iso8859-15'")
-   , ((mod1Mask, xK_i), do
-       sendMessage $ JumpToLayout "Full"
-       spawn "hide")
-
-   -- Shutting down
-   -- , ((layoutChangeModMask, xK_q), spawn "gksu 'shutdown -h now'")
-   , ((layoutChangeModMask, xK_r), spawn "gksu 'shutdown -r now'")
-   , ((layoutChangeModMask, xK_q), spawn "gksu 'pm-suspend'")
+myKeys   = 
+   [ ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
+   , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "Tiled")
+   , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "MTiled")
+   , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "Big")
+   , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "Circle")
+   --
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_e), spawn "konsole -e nvim")
-   -- flameshot style: <https://github.com/lupoDharkael/flameshot>
+   --
+   -- Flameshot: <https://github.com/lupoDharkael/flameshot>
+   -- 
    , ((mod1Mask, xK_s), spawn "flameshot gui")
    , ((mod1Mask .|. shiftMask, xK_s), spawn "flameshot gui -p ~/Pictures/Screenshots/")
-    -- Maim-style
-   -- , ((mod1Mask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png")
-   -- , ((mod1Mask .|. shiftMask, xK_s), spawn "maim -s ~/Pictures/Screenshots/$(date +%s).png")
-   -- Okay, so this only works on floating windows.
-   -- , ((mod1Mask, xK_r), placeFocused (fixed (0,0)))
-   -- , ((mod1Mask, xK_f), withFocused float)
    --
    -- Used to copy say VLC to other screens to watch movies
    , ((layoutChangeModMask, xK_v), windows copyToAll)
    , ((layoutChangeModMask, xK_d), killAllOtherCopies)
+   -- 
    -- Increase the size occupied by the focused window
-   , ((layoutChangeModMask, xK_plus), sendMessage zoomIn)
+   --
+   , ((layoutChangeModMask, xK_plus),  sendMessage zoomIn)
    , ((layoutChangeModMask, xK_minus), sendMessage zoomOut)
   ]
 
@@ -129,21 +112,19 @@ myMouseMod = 0
 myMouseBindings x = M.fromList $
     [ ((myMouseMod, 8), const $ moveTo Prev NonEmptyWS)
     , ((myMouseMod, 9), const $ moveTo Next NonEmptyWS)
-    , ((mod1Mask, button4), const $ spawn "BumpSound up")
-    , ((mod1Mask, button5), const $ spawn "BumpSound down")
     ]
 
+-- TODO: Work out a way to toggle focus to the next WINDOW, not workspace.
 
 -- Setup
---
 main = xmonad $ ewmh def {
-      borderWidth          = 1
-    , terminal             = "/usr/bin/konsole"
-    , normalBorderColor    = "#000000"
-    , focusedBorderColor   = "#e01b4c"
-    , layoutHook           = myLayout
-    , mouseBindings        = myMouseBindings
-    , modMask              = mod1Mask
+      borderWidth        = 1
+    , terminal           = "/usr/bin/konsole"
+    , normalBorderColor  = "#000000"
+    , focusedBorderColor = "#b141f2"
+    , layoutHook         = myLayout
+    , mouseBindings      = myMouseBindings
+    , modMask            = mod1Mask
 
     -- Update pointer to be in the center on focus; I tried
     -- it being the 'Nearest' option, but this was not good
@@ -154,12 +135,10 @@ main = xmonad $ ewmh def {
     -- don't care to investigate right now. If you have troubles
     -- there, just comment it out (or fix it and tell me!).
     --
-    , logHook              = updatePointer (0.5, 0.5) (0, 0)
+    , logHook            = updatePointer (0.5, 0.5) (0, 0)
 
 } `additionalKeys` myKeys `additionalKeysP` [
       ("M-g", gotoMenu)
     , ("M-b", bringMenu)
     , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\``\"")
-      -- Consider changing these to "Tab+", but it must be that it
-      -- doesn't interrupt anything else.
     ]
