@@ -28,20 +28,25 @@ export PATH="$HOME/.local/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Java
+export PATH="$HOME/tools/jdk-11.0.9.1+1/bin:$PATH"
 
 
-alias v=nvim
+
+alias v="nvim"
+alias vim="nvim"
 alias gg="sudo apt install"
 alias df="df -h -t ext4"
 alias g="stack ghci"
 alias p="python"
-alias b="stack build"
+alias b="git checkout -b"
 alias du="du -h"
 # Don't return matches on stupidly long lines
 alias rg="rg -M 1000"
 alias sr="stack run --"
 alias rr="commando -c echo | grep --line-buffered Modified | conscript"
 alias 📚="stack"
+alias jn="jupyter notebook"
 
 # Do all my upgrades ...
 alias upg="sudo apt update && sudo apt upgrade -y && stack upgrade --git --git-branch stable"
@@ -53,7 +58,7 @@ alias ci='git commit -m'
 alias co='git checkout'
 alias pp='git push'
 alias gc='git clone --recursive'
-alias sa='source activate `basename \`pwd\``'
+alias sa='conda activate `basename \`pwd\``'
 alias shh='ssh -q'
 alias cl='clash.clashi'
 
@@ -98,3 +103,4 @@ unset __conda_setup
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/home/noon/.ghcup/env" ] && source "/home/noon/.ghcup/env" # ghcup-env
+if [ -e /home/noon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/noon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
