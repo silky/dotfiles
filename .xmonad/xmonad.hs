@@ -56,6 +56,7 @@ myLayout = layoutHints $ smartBorders $
         named "Tiled"          tiled 
     ||| named "MTiled"         (Mirror tiled)
     ||| named "CenteredMaster" (zoomRow)
+    ||| noBorders Full
     ||| named "TallCols"       (Mirror $ multiCol [1] 1 0.01 (0.5))
     ||| named "Circle"         Circle
     ||| named "Big"            (OneBig (3/4) (3/4))
