@@ -15,7 +15,7 @@ Plug 'ElmCast/elm-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'posva/vim-vue'
 Plug 'djoshea/vim-autoread'
-
+Plug 'chrisbra/unicode.vim'
 
 call plug#end()
 

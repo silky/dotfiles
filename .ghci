@@ -1,12 +1,6 @@
-:set prompt "\ESC[34mϟ> \ESC[m"
+:set prompt "\ESC[34mφ> \ESC[m"
 :set +t
 :set stop :list
 :set -fdefer-type-errors
 
-
--- Hoogle search showing all matches
-:def hoogle \x -> return $ ":! hoogle --color --count=15 \"" ++ x ++ "\""
-:def doc    \s -> return $ ":! hoogle --info \"" ++ s ++ "\""
-:def hlint  \s -> return $ ":! hlint \"" ++ s ++ "\""
---
 -- vim:set filetype=haskell:

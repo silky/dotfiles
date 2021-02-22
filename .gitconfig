@@ -6,8 +6,8 @@
     status = always
 
 [user]
-    name = silky
-    email = noonsilk+-noonsilk@gmail.com
+	name = silky
+	email = noonsilk+-noonsilk@gmail.com
 
 [giggle]
 	main-window-maximized = false
@@ -39,7 +39,7 @@
 	helper = gnome-keyring
 
 [core]
-    editor = /usr/bin/nvim
+	editor = /home/noon/.local/bin/nvim
 
 ; Magic to help torch work.
 ; [url "https://"]
@@ -50,3 +50,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main
