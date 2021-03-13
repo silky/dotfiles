@@ -106,6 +106,8 @@ alias cl='clash.clashi'
 alias dc='docker-compose'
 alias dcl='docker-compose logs -f'
 
+# Nix
+alias n='nix-shell'
 
 
 # Up (with detach) and follow
@@ -147,7 +149,10 @@ unset __conda_setup
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/home/noon/.ghcup/env" ] && source "/home/noon/.ghcup/env" # ghcup-env
-if [ -e /home/noon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/noon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Nix
+. /home/noon/.nix-profile/etc/profile.d/nix.sh
 
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
 
+eval "$(direnv hook zsh)"

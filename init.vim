@@ -16,6 +16,9 @@ Plug 'vmchale/dhall-vim'
 Plug 'posva/vim-vue'
 Plug 'djoshea/vim-autoread'
 Plug 'chrisbra/unicode.vim'
+Plug 'LnL7/vim-nix'
+" Doesn't work: https://github.com/phaazon/hop.nvim/issues
+" Plug 'phaazon/hop.nvim'
 
 call plug#end()
 
