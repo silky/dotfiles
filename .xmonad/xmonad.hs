@@ -87,6 +87,7 @@ myKeys   =
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_e), spawn "konsole -e nvim")
+   , ((mod1Mask, xK_p), spawn "dmenu_run -nb '#ffefd1' -sf '#b141e5' -nf '#333333' -sb '#ffefd1'")
    --
    -- Show a random image full-screen
    , ((mod1Mask, xK_i), spawn "feh -Z -. --randomize --image-bg black /home/noon/images"
