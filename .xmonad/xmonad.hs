@@ -12,6 +12,8 @@
 --  https://bitbucket.org/tobyodavies/shared/src
 --  https://betweentwocommits.com/blog/xmonad-layouts-guide
 
+-- https://github.com/kmarzic/dotfiles/blob/master/.xmonad/xmonad.ansi.hs
+
 import System.IO
 import XMonad hiding ( (|||) )
 import XMonad.Actions.CopyWindow
