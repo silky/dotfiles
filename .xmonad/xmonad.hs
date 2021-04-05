@@ -39,7 +39,8 @@ import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.ZoomRow
 import XMonad.Util.EZConfig
 import XMonad.Util.Run (spawnPipe)
-import TwoBig
+import XMonad.Hooks.ManageDocks
+
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -124,7 +125,7 @@ main = do
         , terminal           = "/usr/bin/konsole"
         , normalBorderColor  = "#000000"
         , focusedBorderColor = "#b141f2"
-        , layoutHook         = myLayout
+        , layoutHook         = avoidStruts myLayout
         , mouseBindings      = myMouseBindings
         , modMask            = mod1Mask
         -- Update pointer to be in the center on focus; I tried
@@ -142,4 +143,4 @@ main = do
           , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\``\"")
           ]
 
-  xmonad myConfig
+  xmonad $ docks myConfig
