@@ -1,0 +1,28 @@
+name:         taffy
+version:      0.1.0.0
+
+data-files:
+  style.css
+
+library:
+  source-dirs: .
+
+dependencies:
+  - base >= 4.7 && < 5
+  - directory
+  - gi-gtk
+  - hslogger
+  - taffybar
+  - text
+  - xdg-basedir
+
+executables:
+  taffybar:
+    main: taffybar.hs
+    source-dirs: .
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - taffy

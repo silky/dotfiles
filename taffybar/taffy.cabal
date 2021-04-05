@@ -1,0 +1,48 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: a499e24f193da341ed5ace9a4ec7610a806e3f71ddc3107f8ce66c1ca0177dea
+
+name:           taffy
+version:        0.1.0.0
+license:        GPL-3
+license-file:   LICENSE
+build-type:     Simple
+data-files:
+    style.css
+
+library
+  other-modules:
+      Paths_taffy
+  hs-source-dirs:
+      ./.
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , gi-gtk
+    , hslogger
+    , taffybar
+    , text
+    , xdg-basedir
+  default-language: Haskell2010
+
+executable taffybar
+  main-is: taffybar.hs
+  other-modules:
+      Paths_taffy
+  hs-source-dirs:
+      ./.
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , gi-gtk
+    , hslogger
+    , taffy
+    , taffybar
+    , text
+    , xdg-basedir
+  default-language: Haskell2010
