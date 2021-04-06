@@ -284,6 +284,11 @@ vmap \\  <Plug>Commentary
 let g:EasyMotion_leader_key = '.'
 
 
+augroup readonly
+  au!
+  au BufEnter * if(!&modifiable || &ro) | :highlight Normal ctermbg=255 | endif
+augroup end
+
 
 " Pandoc
 augroup ft_pandoc
