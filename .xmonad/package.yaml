@@ -8,6 +8,7 @@ copyright:           2016 Noon van der Silk
 dependencies:
   - base >= 4.7 && < 5
   - containers
+  - split
   - xmonad
   - xmonad-contrib
   - X11

@@ -14,6 +14,8 @@
 
 -- https://github.com/kmarzic/dotfiles/blob/master/.xmonad/xmonad.ansi.hs
 
+import Data.List.Split (splitOn)
+import Data.Maybe (isJust)
 import System.IO
 import XMonad hiding ( (|||) )
 import XMonad.Actions.CopyWindow
@@ -42,7 +44,7 @@ import XMonad.Layout.ZoomRow
 import XMonad.Util.EZConfig
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Hooks.ManageDocks
-
+import XMonad.Layout.IndependentScreens
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -80,7 +82,15 @@ myLayout = layoutHints $ smartBorders $
 layoutChangeModMask = mod1Mask .|. shiftMask
 
 
-myKeys   = 
+windowShuffling conf = 
+    [ ((mod1Mask .|. e, k), windows $ onCurrentScreen f i)
+        | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
+        , (f, e) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+    ]
+
+-- https://stackoverflow.com/questions/33547168/xmonad-combine-dwm-style-workspaces-per-physical-screen-with-cycling-function
+
+myKeys conf = 
    [ ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "Tiled")
    , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "MTiled")
@@ -104,26 +114,54 @@ myKeys   =
    --
    -- Flameshot: <https://github.com/lupoDharkael/flameshot>
    , ((mod1Mask, xK_s), spawn "flameshot gui")
-   , ((mod1Mask .|. shiftMask, xK_s), spawn "flameshot gui -p ~/Pictures/Screenshots/")
+   , ((mod1Mask .|. shiftMask, xK_s), swapScreen) -- spawn "flameshot gui -p ~/Pictures/Screenshots/")
    --
    -- Increase the size occupied by the focused window
    , ((layoutChangeModMask, xK_plus),  sendMessage zoomIn)
    , ((layoutChangeModMask, xK_minus), sendMessage zoomOut)
   ]
+  ++ windowShuffling conf
+
+
+swapScreen =  do
+  x <- currentScreen
+  y <- gets (W.tag . W.workspace . W.current . windowset)
+
+  -- HACK: Relies on details of `XMonad.Layout.IndependentScreens` ...
+  let [left,right] = splitOn "_" y
+      toggle "0"   = "1"
+      toggle "1"   = "0"
+
+  windows $ W.shift (toggle left ++ "_" ++ right)
 
 
 -- Toggle the active workspace with the 'Forward/Back' mouse buttons.
 myMouseMod = 0
 myMouseBindings x = M.fromList $
-    [ ((myMouseMod, 8), const $ moveTo Prev NonEmptyWS)
-    , ((myMouseMod, 9), const $ moveTo Next NonEmptyWS)
+    [ ((myMouseMod, 8), const $ moveTo Prev nonEmptySpacesOnCurrentScreen)
+    , ((myMouseMod, 9), const $ moveTo Next nonEmptySpacesOnCurrentScreen)
     ]
+
+isOnScreen :: ScreenId -> WindowSpace -> Bool
+isOnScreen s ws = s == unmarshallS (W.tag ws)
+
+currentScreen :: X ScreenId
+currentScreen = gets (W.screen . W.current . windowset)
+
+nonEmptySpacesOnCurrentScreen :: WSType
+nonEmptySpacesOnCurrentScreen = WSIs $ do
+  s <- currentScreen
+  return $ \x -> isJust (W.stack x) && isOnScreen s x
+
+
 
 
 -- Setup
 main = do
+  nScreens <- countScreens
   let myConfig = ewmh def {
           borderWidth        = 1
+        , workspaces         = withScreens nScreens (workspaces def)
         , terminal           = "/usr/bin/konsole"
         , normalBorderColor  = "#000000"
         , focusedBorderColor = "#b141f2"
@@ -139,10 +177,12 @@ main = do
         -- don't care to investigate right now. If you have troubles
         -- there, just comment it out (or fix it and tell me!).
         , logHook            = updatePointer (0.5, 0.5) (0, 0)
-      } `additionalKeys` myKeys `additionalKeysP` [
-            ("M-g", gotoMenu)
-          , ("M-b", bringMenu)
-          , ("M-0", spawn "notify-send \"`echo \\`date '+%I:%M %p %A, %b %d %Y'\\``\"")
-          ]
+      } `additionalKeys'` myKeys 
 
   xmonad $ docks myConfig
+
+
+additionalKeys' :: XConfig a -> (XConfig a -> [((KeyMask, KeySym), X ())]) -> XConfig a
+additionalKeys' conf keyList =
+    conf { keys = \cnf -> M.union (M.fromList (keyList conf)) (keys conf cnf) }
+
