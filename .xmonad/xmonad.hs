@@ -95,7 +95,7 @@ myKeys conf =
    , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "Tiled")
    , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "MTiled")
    , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "Big")
-   , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "Circle")
+   -- , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "Circle")
    --
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
@@ -104,6 +104,10 @@ myKeys conf =
    --
    -- Show a random image full-screen
    , ((mod1Mask, xK_i), spawn "feh -Z -. --randomize --image-bg black /home/noon/images"
+                        >> sendMessage (JumpToLayout "Full")
+     )
+   --
+   , ((layoutChangeModMask, xK_i), spawn "feh -. -Y -x -q -D 60 -B black -F -Z -z -r /home/noon/slideshow-images"
                         >> sendMessage (JumpToLayout "Full")
      )
    -- 
