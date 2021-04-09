@@ -90,7 +90,7 @@ myKeys conf =
                         >> sendMessage (JumpToLayout "Full")
      )
    --
-   , ((layoutChangeModMask, xK_i), spawn "feh -. -Y -x -q -D 300 -B black -F -Z -z -r /home/noon/slideshow-images"
+   , ((layoutChangeModMask, xK_i), spawn "feh -. -x -q -D 300 -B black -F -Z -z -r /home/noon/slideshow-images"
                         >> sendMessage (JumpToLayout "Full")
      )
    -- 
