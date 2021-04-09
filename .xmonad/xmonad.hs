@@ -50,13 +50,6 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 
--- Layout Management
---
---  We are interested in changing layouts in two ways. One is the
---  typical iteration with mod-space, the other is specific layout
---  selection through windows-<letter>, where the letter indicates
---  specific layout
-
 myLayout = layoutHints $ smartBorders $ 
         named "Tiled"          tiled 
     ||| named "MTiled"         (Mirror tiled)
@@ -65,7 +58,6 @@ myLayout = layoutHints $ smartBorders $
     ||| named "TallCols"       (Mirror $ multiCol [1] 1 0.01 (0.5))
     ||| named "Circle"         Circle
     ||| named "Big"            (OneBig (3/4) (3/4))
-    -- ||| named "C:Circle" rowOfColumns
   where
      tiled   = Tall nmaster delta ratio
 
@@ -82,20 +74,11 @@ myLayout = layoutHints $ smartBorders $
 layoutChangeModMask = mod1Mask .|. shiftMask
 
 
-windowShuffling conf = 
-    [ ((mod1Mask .|. e, k), windows $ onCurrentScreen f i)
-        | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
-        , (f, e) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-    ]
-
--- https://stackoverflow.com/questions/33547168/xmonad-combine-dwm-style-workspaces-per-physical-screen-with-cycling-function
-
 myKeys conf = 
    [ ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "Tiled")
    , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "MTiled")
    , ((layoutChangeModMask, xK_b), sendMessage $ JumpToLayout "Big")
-   -- , ((layoutChangeModMask, xK_i), sendMessage $ JumpToLayout "Circle")
    --
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
@@ -107,7 +90,7 @@ myKeys conf =
                         >> sendMessage (JumpToLayout "Full")
      )
    --
-   , ((layoutChangeModMask, xK_i), spawn "feh -. -Y -x -q -D 60 -B black -F -Z -z -r /home/noon/slideshow-images"
+   , ((layoutChangeModMask, xK_i), spawn "feh -. -Y -x -q -D 300 -B black -F -Z -z -r /home/noon/slideshow-images"
                         >> sendMessage (JumpToLayout "Full")
      )
    -- 
@@ -118,15 +101,17 @@ myKeys conf =
    --
    -- Flameshot: <https://github.com/lupoDharkael/flameshot>
    , ((mod1Mask, xK_s), spawn "flameshot gui")
-   , ((mod1Mask .|. shiftMask, xK_s), swapScreen) -- spawn "flameshot gui -p ~/Pictures/Screenshots/")
    --
-   -- Increase the size occupied by the focused window
-   , ((layoutChangeModMask, xK_plus),  sendMessage zoomIn)
-   , ((layoutChangeModMask, xK_minus), sendMessage zoomOut)
+   , ((mod1Mask .|. shiftMask, xK_s), swapScreen) 
   ]
-  ++ windowShuffling conf
+  ++ 
+  [ ((mod1Mask .|. e, k), windows $ onCurrentScreen f i)
+      | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
+      , (f, e) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+  ]
 
 
+-- https://stackoverflow.com/questions/33547168/xmonad-combine-dwm-style-workspaces-per-physical-screen-with-cycling-function
 swapScreen =  do
   x <- currentScreen
   y <- gets (W.tag . W.workspace . W.current . windowset)
@@ -157,10 +142,7 @@ nonEmptySpacesOnCurrentScreen = WSIs $ do
   s <- currentScreen
   return $ \x -> isJust (W.stack x) && isOnScreen s x
 
-
-
-
--- Setup
+main :: IO ()
 main = do
   nScreens <- countScreens
   let myConfig = ewmh def {
