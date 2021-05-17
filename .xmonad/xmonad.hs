@@ -83,14 +83,14 @@ myKeys conf =
    , ((mod1Mask, xK_o), spawn "nautilus --no-desktop")
    , ((mod1Mask, xK_m), spawn "konsole -e alsamixer")
    , ((mod1Mask, xK_e), spawn "konsole -e nvim")
-   , ((mod1Mask, xK_p), spawn "dmenu_run -nb '#ffefd1' -sf '#b141e5' -nf '#333333' -sb '#ffefd1'")
+   , ((mod1Mask, xK_p), spawn "dmenu_run -nb '#d1f0ff' -sf '#b141e5' -nf '#333333' -sb '#d1f0ff'")
    --
    -- Show a random image full-screen
    , ((mod1Mask, xK_i), spawn "feh -Z -. --randomize --image-bg black /home/noon/images"
                         >> sendMessage (JumpToLayout "Full")
      )
    --
-   , ((layoutChangeModMask, xK_i), spawn "feh -. -x -q -D 300 -B black -F -Z -z -r /home/noon/slideshow-images"
+   , ((layoutChangeModMask, xK_i), spawn "feh -. -x -q -D 600 -B black -F -Z -z -r /home/noon/slideshow-images"
                         >> sendMessage (JumpToLayout "Full")
      )
    -- 
@@ -102,7 +102,9 @@ myKeys conf =
    -- Flameshot: <https://github.com/lupoDharkael/flameshot>
    , ((mod1Mask, xK_s), spawn "flameshot gui")
    --
-   , ((mod1Mask .|. shiftMask, xK_s), swapScreen) 
+   , ((layoutChangeModMask, xK_s), swapScreen) 
+   --
+   , ((mod1Mask, xK_b), bringMenu)
   ]
   ++ 
   [ ((mod1Mask .|. e, k), windows $ onCurrentScreen f i)
