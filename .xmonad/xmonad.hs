@@ -50,8 +50,8 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 
-myLayout = layoutHints $ smartBorders $ 
-        named "Tiled"          tiled 
+myLayout = layoutHints $ smartBorders $
+        named "Tiled"          tiled
     ||| named "MTiled"         (Mirror tiled)
     ||| named "CenteredMaster" (zoomRow)
     ||| noBorders Full
@@ -74,7 +74,7 @@ myLayout = layoutHints $ smartBorders $
 layoutChangeModMask = mod1Mask .|. shiftMask
 
 
-myKeys conf = 
+myKeys conf =
    [ ((layoutChangeModMask, xK_f), sendMessage $ JumpToLayout "Full")
    , ((layoutChangeModMask, xK_t), sendMessage $ JumpToLayout "Tiled")
    , ((layoutChangeModMask, xK_w), sendMessage $ JumpToLayout "MTiled")
@@ -97,7 +97,7 @@ myKeys conf =
    , ((layoutChangeModMask, xK_i), spawn "feh -. -x -q -D 600 -B black -F -Z -z -r /home/noon/slideshow-images"
                         >> sendMessage (JumpToLayout "Full")
      )
-   -- 
+   --
    -- Move mouse focus to the other screen; useful for more a setup with more
    -- than one screen
    , ((mod1Mask, xK_q), screenWorkspace 0 >>= flip whenJust (windows . W.view))
@@ -106,11 +106,11 @@ myKeys conf =
    -- Flameshot: <https://github.com/lupoDharkael/flameshot>
    , ((mod1Mask, xK_s), spawn "flameshot gui")
    --
-   , ((layoutChangeModMask, xK_s), swapScreen) 
+   , ((layoutChangeModMask, xK_s), swapScreen)
    --
    , ((mod1Mask, xK_b), bringMenu)
   ]
-  ++ 
+  ++
   [ ((mod1Mask .|. e, k), windows $ onCurrentScreen f i)
       | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
       , (f, e) <- [(W.greedyView, 0), (W.shift, shiftMask)]
@@ -169,7 +169,7 @@ main = do
         -- don't care to investigate right now. If you have troubles
         -- there, just comment it out (or fix it and tell me!).
         , logHook            = updatePointer (0.5, 0.5) (0, 0)
-      } `additionalKeys'` myKeys 
+      } `additionalKeys'` myKeys
 
   xmonad $ docks myConfig
 

@@ -1,9 +1,9 @@
 [color]
-    ui = auto
-    branch = always
-    diff = always
-    interative = always
-    status = always
+  ui         = auto
+  branch     = always
+  diff       = always
+  interative = always
+  status     = always
 
 [user]
 	name = silky
@@ -17,10 +17,12 @@
 	main-window-view = HistoryView
 
 [alias]
-    hist = log --oneline --graph --decorate
+  hist = log --oneline --graph --decorate
 	d = difftool
 	edit = !$EDITOR \"$(git ls-files | tmenu)\"
 	quick-stats = ! /usr/local/bin/git-quick-stats
+	pwl = push --force-with-lease
+	fwl = push --force-with-lease
 
 [push]
 	default = matching
@@ -39,16 +41,16 @@
 	helper = gnome-keyring
 
 [core]
-	editor = /home/noon/.local/bin/nvim
+  editor = /home/noon/.local/bin/nvim
 
-; Magic to help torch work.
-; [url "https://"]
-;    insteadOf = git://
-;
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[includeIf "gitdir:~/dev/tweag/"]
+  path = ~/dev/tweag/tweag.gitconfig

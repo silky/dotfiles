@@ -89,6 +89,8 @@ Color=0,0,0
 Color=0,0,0
 
 [General]
+Blur=false
+ColorRandomization=false
 Description=Noons
 Opacity=1
 Wallpaper=
