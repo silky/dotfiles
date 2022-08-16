@@ -37,6 +37,9 @@ export PATH="/sbin:$PATH"
 export PATH="/bin:$PATH"
 export PATH="/snap/bin:$PATH"
 
+# Conda
+export PATH="$HOME/tools/miniconda3/bin/:$PATH"
+
 # Emacs
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
@@ -65,7 +68,6 @@ alias p="python"
 alias du="du -h"
 # Don't return matches on stupidly long lines
 alias rg="rg -M 1000"
-alias sr="stack run --"
 alias rr="commando -c echo | grep --line-buffered Modified | conscript"
 alias jn="jupyter notebook"
 alias r='ranger'
@@ -84,10 +86,12 @@ alias ci='git commit -m'
 alias co='git checkout'
 alias pp='git push'
 alias gc='git clone --recursive'
+
 alias sa='source activate `basename \`pwd\``'
 
 alias shh='ssh -q'
 alias cl='clash.clashi'
+
 alias yank='yank-cli'
 
 alias tv='tidy-viewer'
@@ -112,30 +116,20 @@ export LANG=en_AU.UTF-8
 export LANGUAGE=en_AU.UTF-8
 
 
+RPG_CLI=/home/noon/dev/ext/rpg-cli/target/release/rpg-cli
+rpg () {
+   $RPG_CLI "$@"
+   cd "$($RPG_CLI --pwd)"
+}
+
+
+# Case-sensitive autocompleting
+export CASE_SENSITIVE=true
+CASE_SENSITIVE=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [ -e /home/noon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/noon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 eval "$(direnv hook zsh)"
-
-
-# >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/noon/tools/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/noon/tools/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/noon/tools/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/noon/tools/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
-# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-
 
 [ -f "/home/noon/.ghcup/env" ] && source "/home/noon/.ghcup/env" # ghcup-en

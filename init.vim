@@ -1,28 +1,30 @@
 " Noons new vim configuration file for NeoVim.
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-easy-align'
-Plug 'guns/xterm-color-table.vim'
-Plug 'tpope/vim-commentary'
-Plug 'neovimhaskell/haskell-vim'
+Plug 'ElmCast/elm-vim'
+Plug 'LnL7/vim-nix'
+Plug 'cespare/vim-toml'
+Plug 'chrisbra/unicode.vim'
+Plug 'djoshea/vim-autoread'
 Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'guns/xterm-color-table.vim'
+Plug 'iamcco/markdown-preview.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
-Plug 'purescript-contrib/purescript-vim'
-Plug 'ElmCast/elm-vim'
-Plug 'vmchale/dhall-vim'
-Plug 'posva/vim-vue'
-Plug 'djoshea/vim-autoread'
-Plug 'chrisbra/unicode.vim'
-Plug 'LnL7/vim-nix'
-Plug 'vmchale/cabal-project-vim'
-Plug 'iamcco/markdown-preview.nvim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'rhysd/git-messenger.vim'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'posva/vim-vue'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'rhysd/git-messenger.vim'
 Plug 'sdiehl/vim-ormolu'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-commentary'
+Plug 'vmchale/cabal-project-vim'
+Plug 'vmchale/dhall-vim'
 
 let g:ormolu_disable=1
 let g:ormolu_command="fourmolu"
@@ -30,11 +32,6 @@ let g:ormolu_suppress_stderr=1
 
 " nnoremap ff :call RunOrmolu()<CR>
 xnoremap ff :<c-u>call OrmoluBlock()<CR>
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plug 'plasticboy/vim-markdown'
-" Plug 'godlygeek/tabular'
 
 " Doesn't work: https://github.com/phaazon/hop.nvim/issues
 " Plug 'phaazon/hop.nvim'

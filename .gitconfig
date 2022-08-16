@@ -6,51 +6,40 @@
   status     = always
 
 [user]
-	name = silky
-	email = noonsilk+-noonsilk@gmail.com
-
-[giggle]
-	main-window-maximized = false
-	main-window-geometry = 809x358+1109+0
-	history-view-vpane-position = 37
-	file-view-vpane-position = 44
-	main-window-view = HistoryView
+  name = silky
+  email = noonsilk+-noonsilk@gmail.com
 
 [alias]
   hist = log --oneline --graph --decorate
-	d = difftool
-	edit = !$EDITOR \"$(git ls-files | tmenu)\"
-	quick-stats = ! /usr/local/bin/git-quick-stats
-	pwl = push --force-with-lease
-	fwl = push --force-with-lease
+  d = difftool
+  edit = !$EDITOR \"$(git ls-files | tmenu)\"
+  pwl = push --force-with-lease
 
 [push]
-	default = matching
+  default = matching
 
 [diff]
-	tool = vimdiff
-	submodule = log
+  tool = vimdiff
+  submodule = log
 
 [difftool]
-	prompt = false
+  prompt = false
 
 [status]
-	submodulesummary = 1
+  submodulesummary = 1
 
 [credential]
-	helper = gnome-keyring
+  helper = gnome-keyring
 
 [core]
+  ; Todo: This will need to change.
   editor = /home/noon/.local/bin/nvim
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [init]
   defaultBranch = main
-
-[includeIf "gitdir:~/dev/tweag/"]
-  path = ~/dev/tweag/tweag.gitconfig
