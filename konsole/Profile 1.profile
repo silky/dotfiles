@@ -15,6 +15,7 @@ ShowTerminalSizeHint=false
 [Interaction Options]
 AutoCopySelectedText=true
 CopyTextAsHTML=false
+OpenLinksByDirectClickEnabled=true
 TripleClickMode=0
 
 [Keyboard]
@@ -23,6 +24,7 @@ KeyBindings=default
 [Scrolling]
 HistoryMode=2
 HistorySize=3100
+ReflowLines=false
 ScrollBarPosition=2
 
 [Terminal Features]
