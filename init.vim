@@ -145,6 +145,17 @@ set rnu
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 set guicursor=
 
+let g:clipboard = {
+  \   'name': 'helic',
+  \   'copy': {
+  \      '+': 'hel yank --agent nvim',
+  \      '*': 'hel yank --agent nvim',
+  \    },
+  \   'paste': {
+  \      '+': 'xsel -bo',
+  \      '*': 'xsel -bo',
+  \   },
+  \ }
 
 " Status line -----------------------------------------------------------------
 
