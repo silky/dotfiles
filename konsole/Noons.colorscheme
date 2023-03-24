@@ -71,13 +71,13 @@ Color=166,0,255
 Color=166,0,255
 
 [Color7]
-Color=211,215,207
+Color=255,170,255
 
 [Color7Faint]
-Color=211,215,207
+Color=255,170,255
 
 [Color7Intense]
-Color=211,215,207
+Color=255,170,255
 
 [Foreground]
 Color=0,0,0
@@ -89,8 +89,11 @@ Color=0,0,0
 Color=0,0,0
 
 [General]
+Anchor=0.5,0.5
 Blur=false
 ColorRandomization=false
 Description=Noons
+FillStyle=Tile
 Opacity=1
 Wallpaper=
+WallpaperOpacity=1

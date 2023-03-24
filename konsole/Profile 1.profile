@@ -13,9 +13,9 @@ Parent=FALLBACK/
 ShowTerminalSizeHint=false
 
 [Interaction Options]
-AutoCopySelectedText=true
+AutoCopySelectedText=false
 CopyTextAsHTML=false
-OpenLinksByDirectClickEnabled=true
+OpenLinksByDirectClickEnabled=false
 TripleClickMode=0
 
 [Keyboard]
