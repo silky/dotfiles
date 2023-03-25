@@ -8,12 +8,15 @@
 [user]
   name = silky
   email = noonsilk+-noonsilk@gmail.com
+  signingkey = "2141428D1801ACCE"
 
 [alias]
   hist = log --oneline --graph --decorate
   d = difftool
   edit = !$EDITOR \"$(git ls-files | tmenu)\"
   pwl = push --force-with-lease
+  mr = push -o merge_request.create --set-upstream origin HEAD
+  mrl = push --force-with-lease -o merge_request.create --set-upstream origin HEAD
 
 [push]
   default = matching
@@ -35,11 +38,27 @@
   ; Todo: This will need to change.
   editor = /home/noon/.local/bin/nvim
 
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+; [filter "lfs"]
+;   clean = git-lfs clean -- %f
+; 	smudge = git-lfs smudge -- %f
+; 	process = git-lfs filter-process
+;   required = true
 
 [init]
   defaultBranch = main
+
+[commit]
+  gpgsign = true
+
+[includeIf "gitdir:~/dev/generative/"]
+  path = ~/dev/generative/generative.gitconfig
+; [filter "lfs"]
+; 	required = true
+; 	clean = git-lfs clean -- %f
+; 	smudge = git-lfs smudge -- %f
+; 	process = git-lfs filter-process
+; [filter "lfs"]
+; 	clean = git-lfs clean -- %f
+; 	smudge = git-lfs smudge -- %f
+; 	process = git-lfs filter-process
+; 	required = true

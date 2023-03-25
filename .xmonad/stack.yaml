@@ -1,20 +1,20 @@
-resolver: lts-16.12
+resolver: lts-19.12
 
 # Moderate crime against package management. These paths just point to my copy
 # of these repos.
 packages:
   - '.'
-  - ../../xmonad
-  - ../../xmonad-contrib
+  # - ../../xmonad
+  # - ../../xmonad-contrib
 
 # Override default flag values for local packages and extra-deps
-flags:
-    xmonad:
-        testing: false
+# flags:
+#     xmonad:
+#         testing: false
 
-    xmonad-contrib:
-        testing: false
-        use_xft: false
+#     xmonad-contrib:
+#         testing: false
+#         use_xft: false
 
 # Extra package databases containing global packages
 extra-package-dbs: []
